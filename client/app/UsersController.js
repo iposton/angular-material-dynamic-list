@@ -63,9 +63,9 @@
                 this.user = selectedUser;
 
                 this.items = [
-                    { name: 'Facebook', icon: 'facebook', icon_url: '../svg/facebook-box.svg', link: this.user.facebookUrl },
-                    { name: 'Twitter', icon: 'twitter', icon_url: '../svg/twitter-box.svg', link: this.user.twitterUrl },
-                    { name: 'Google+', icon: 'google_plus', icon_url: '../svg/google-plus-box.svg', link: this.user.googleplusUrl }
+                    { name: 'Facebook', icon: 'facebook', icon_url: 'svg/facebook-box.svg', link: this.user.facebookUrl },
+                    { name: 'Twitter', icon: 'twitter', icon_url: 'svg/twitter-box.svg', link: this.user.twitterUrl },
+                    { name: 'Google+', icon: 'google_plus', icon_url: 'svg/google-plus-box.svg', link: this.user.googleplusUrl }
                 ];
                 this.contactUser = function(action) {
                     // The actually contact process has not been implemented...

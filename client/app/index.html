@@ -6,7 +6,7 @@
    <meta name="description" content="My Lessons">
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
-    <link rel="stylesheet" href="../../node_modules/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="app.css"/>
 
 </head>
@@ -48,10 +48,10 @@
 </div>
 
 
-    <script src="../../node_modules/angular/angular.js"></script>
-    <script src="../../node_modules/angular-animate/angular-animate.js"></script>
-    <script src="../../node_modules/angular-aria/angular-aria.js"></script>
-    <script src="../../node_modules/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="Users.js"></script>
     <script src="UsersController.js"></script>
     <script src="UsersService.js"></script>
@@ -60,11 +60,11 @@
       angular.module('MyApp', ['ngMaterial', 'users'])
         .config(function( $mdIconProvider, $mdThemingProvider ){
          
-          $mdIconProvider.icon('share', '../svg/share.svg', 24)
-              .icon("menu"       , "../svg/menu.svg"        , 24)
-              .icon("google_plus", "../svg/google-plus-box.svg" , 24)
-              .icon("twitter"    , "../svg/twitter-box.svg"     , 24)
-              .icon("facebook"      , "../svg/facebook-box.svg", 24);
+          $mdIconProvider.icon('share', 'svg/share.svg', 24)
+              .icon("menu"       , "svg/menu.svg"        , 24)
+              .icon("google_plus", "svg/google-plus-box.svg" , 24)
+              .icon("twitter"    , "svg/twitter-box.svg"     , 24)
+              .icon("facebook"      , "svg/facebook-box.svg", 24);
 
           $mdThemingProvider.theme('default')
               .primaryPalette('brown')
