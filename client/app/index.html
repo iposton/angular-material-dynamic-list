@@ -5,7 +5,7 @@
   <title>My Lessons</title>
    <meta name="description" content="My Lessons">
 
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="app.css"/>
 
@@ -23,8 +23,8 @@
 
     <md-list ng-click="ul.toggleUserList()">
       <md-list-item ng-repeat="u in ul.users">
-        <md-button ng-click="ul.selectUser(u)">
-        <img src="{{u.avatar}}" class="png-icon avatar" style="width: 50px; height: 50px;">
+        <md-button ng-click="ul.selectUser(u); ul.setActive(u, ul.users)" ng-class="{active: u.active}">
+        <img src="{{u.avatar}}" class="png-icon avatar">
                   <!-- <md-icon ng-src="{{u.avatar}}" class="avatar"></md-icon> -->
                   {{u.name}}
                 </md-button>

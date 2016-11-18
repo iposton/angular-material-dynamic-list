@@ -18,6 +18,7 @@
         self.selectUser = selectUser;
         self.makeContact = makeContact;
         self.toggleUserList = toggleUserList;
+        self.setActive = setActive;
 
         // Load all registered users
 
@@ -42,6 +43,15 @@
             self.selected = user;
             $mdBottomSheet.hide(self.selected);
         }
+
+        function setActive (item, list){
+          list.some(function(item){
+            if(item.active){
+              return item.active = false;
+            }
+          });
+          item.active = true;
+        };
 
         function makeContact(selectedUser) {
             console.log('hi you have hit the users ctrl :)');

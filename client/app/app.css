@@ -168,8 +168,8 @@ md-icon {
     display: inline-block;
     background-repeat: no-repeat no-repeat;
     pointer-events: none;
-    /*top: 6px;*/
-    /*position: relative;*/
+    width: 100px;
+    height: 100px;
 }
 
 h1 {
@@ -179,4 +179,12 @@ h1 {
 #content a {
   text-decoration: none;
   color: #111;
+}
+
+md-list-item .active {
+  background-color: rgba(158,158,158,0.2);
+}
+
+md-list-item .md-focused {
+  background: #fff!important;
 }
