@@ -7,7 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
 
 </head>
 <body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as ll">
@@ -24,7 +24,7 @@
     <md-list ng-click="ul.toggleLessonList()">
       <md-list-item ng-repeat="l in ll.lessons">
         <md-button ng-click="ll.selectLesson(l); ll.setActive(l, ll.lessons)" ng-class="{active: l.active}">
-        <img src="{{l.avatar}}" class="png-icon avatar">
+        <img ng-src="{{l.avatar}}" class="png-icon avatar">
                   <!-- <md-icon ng-src="{{l.avatar}}" class="avatar"></md-icon> -->
                   {{l.name}}
                 </md-button>
@@ -34,7 +34,7 @@
   </md-sidenav>
 
   <md-content id="content" flex>
-      <img src="{{ll.selected.avatar}}" class="avatar">
+      <img ng-src="{{ll.selected.avatar}}" class="avatar">
       <!-- <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon> -->
           <a ng-href="{{ll.selected.websiteUrl}}" target="_blank"><h2>{{ll.selected.name}}</h2></a>
           <p>

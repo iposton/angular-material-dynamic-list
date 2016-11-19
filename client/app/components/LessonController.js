@@ -5,7 +5,7 @@
     .config(function($sceProvider) {
         // ngMaterial $mdIconProvider will be updated  to mark urls as safe.
         // Meanwhile, disable $sce for ngMaterial CodePen Demos that using external SVGs
-        $sceProvider.enabled(false);
+        //$sceProvider.enabled(false);
     })
 
     .controller('LessonController', ['lessonService', '$mdBottomSheet', '$mdSidenav', '$log', LessonController]);
