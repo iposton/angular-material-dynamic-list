@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="app.css"/>
 
 </head>
-<body ng-app="MyApp" ng-cloak layout="column" ng-controller="UserController as ul">
+<body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as ll">
 <md-toolbar layout="row">
-<md-button class="menu" ng-click="ul.toggleUserList()" hide-gt-sm aria-label="Show user list sidenav">
+<md-button class="menu" ng-click="ll.toggleLessonList()" hide-gt-sm aria-label="Show lesson list sidenav">
   <md-icon md-svg-icon="menu"></md-icon>
 </md-button>
 <h1>My Lessons</h1>
@@ -21,12 +21,12 @@
 <div class="container" layout="row" flex>
   <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
 
-    <md-list ng-click="ul.toggleUserList()">
-      <md-list-item ng-repeat="u in ul.users">
-        <md-button ng-click="ul.selectUser(u); ul.setActive(u, ul.users)" ng-class="{active: u.active}">
-        <img src="{{u.avatar}}" class="png-icon avatar">
-                  <!-- <md-icon ng-src="{{u.avatar}}" class="avatar"></md-icon> -->
-                  {{u.name}}
+    <md-list ng-click="ul.toggleLessonList()">
+      <md-list-item ng-repeat="l in ll.lessons">
+        <md-button ng-click="ll.selectLesson(l); ll.setActive(l, ll.lessons)" ng-class="{active: l.active}">
+        <img src="{{l.avatar}}" class="png-icon avatar">
+                  <!-- <md-icon ng-src="{{l.avatar}}" class="avatar"></md-icon> -->
+                  {{l.name}}
                 </md-button>
       </md-list-item>
     </md-list>
@@ -34,47 +34,25 @@
   </md-sidenav>
 
   <md-content id="content" flex>
-      <img src="{{ul.selected.avatar}}" class="avatar">
+      <img src="{{ll.selected.avatar}}" class="avatar">
       <!-- <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon> -->
-          <a ng-href="{{ul.selected.websiteUrl}}" target="_blank"><h2>{{ul.selected.name}}</h2></a>
+          <a ng-href="{{ll.selected.websiteUrl}}" target="_blank"><h2>{{ll.selected.name}}</h2></a>
           <p>
-            {{ul.selected.content}}
+            {{ll.selected.content}}
           </p>
 
-          <md-button class="share" md-no-ink aria-label="Share with {{ul.selected.name}}" ng-click="ul.makeContact(ul.selected)">
+          <md-button class="share" md-no-ink aria-label="Share with {{ll.selected.name}}" ng-click="ll.makeContact(ll.selected)">
             <md-icon md-svg-icon="share"></md-icon>
           </md-button> 
   </md-content>
 </div>
-
-
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="Users.js"></script>
-    <script src="UsersController.js"></script>
-    <script src="UsersService.js"></script>
-
-    <script>
-      angular.module('MyApp', ['ngMaterial', 'users'])
-        .config(function( $mdIconProvider, $mdThemingProvider ){
-         
-          $mdIconProvider.icon('share', 'svg/share.svg', 24)
-              .icon("menu"       , "svg/menu.svg"        , 24)
-              .icon("google_plus", "svg/google-plus-box.svg" , 24)
-              .icon("twitter"    , "svg/twitter-box.svg"     , 24)
-              .icon("facebook"      , "svg/facebook-box.svg", 24);
-
-          $mdThemingProvider.theme('default')
-              .primaryPalette('brown')
-              .accentPalette('red');
-      
-      })
-      .run(function($log) {
-        console.log("MyApp is loaded! :)");
-        $log.debug("MyApp is loaded! :) $log");
-      }); 
-    </script>
+    <script src="components/Lessons.js"></script>
+    <script src="components/LessonController.js"></script>
+    <script src="components/LessonService.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
