@@ -12,6 +12,4 @@
              .accentPalette('red');
 
      })
-     .run(function($log) {
-         $log.debug("MyApp is loaded in the new place! :) $log");
-     });
+     

@@ -29,13 +29,18 @@ md-list-item > button {
   text-align:left !important;
 }
 
-  md-list .md-button.selected {
-    color: #03a9f4;
-  }
+md-list .md-button.selected {
+  color: #03a9f4;
+}
 
-  md-sidenav  md-list {
-    padding: 0px 0px 8px 0px;
-  }
+md-sidenav  md-list {
+  padding: 0px 0px 8px 0px;
+}
+
+md-sidenav {
+  height: 100%;
+}
+    
 
 
 /* Primary content area */
