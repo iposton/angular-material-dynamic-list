@@ -1,0 +1,9 @@
+<img ng-src="{{selected.avatar}}" class="avatar">
+<!-- <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon> -->
+<a ng-href="{{selected.websiteUrl}}" target="_blank"><h2>{{selected.name}}</h2></a>
+<p>
+    {{selected.content}}
+</p>
+<md-button class="share" md-no-ink aria-label="Share with {{selected.name}}" ng-click="lc.makeContact(selected)">
+    <md-icon md-svg-icon="share"></md-icon>
+</md-button>

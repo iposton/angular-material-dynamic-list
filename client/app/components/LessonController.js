@@ -36,10 +36,7 @@
         function toggleLessonList($event) {
             $mdSidenav('left').toggle();
             $mdBottomSheet.hide($event);
-        }
-
-      
-        
+        }  
 
     }
 })();
