@@ -10,7 +10,7 @@
                 controllerAs: "ll"
             }
 
-            function mainContainerCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope) {
+            function mainContainerCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $timeout) {
                 var self = this;
 
                 self.selected = null;
@@ -18,15 +18,28 @@
                 self.selectLesson = selectLesson;
                 self.setActive = setActive;
 
-                // Load all registered Lessons
+                // THE OLD WAY FOR SHOWING FOR SELECTING THE FIRST ITEM IN THE LIST FOR CONTENT VIEW
+                // lessonService
+                //     .loadAllLessons()
+                //     .then(function(ref) {
 
-                lessonService
-                    .loadAllLessons()
-                    .then(function(lessons) {
-                        self.lessons = [].concat(lessons);
-                        self.selected = lessons[0];
-                    });
+                //         function getSelected(ref) {
+                //             return ref.map(function(select) {
+                //                 return select;
+                //             })
+                //         }
 
+                //         var selected = getSelected(ref);
+
+                //         //self.selected = selected[0];
+              
+
+                //         console.log(self.selected);
+
+                //     });
+
+
+                self.lessons = lessonService.ref;
 
 
                 function selectLesson(lesson) {
@@ -39,7 +52,9 @@
                 }
 
                 function setActive(item, list) {
+                    console.log('active is called...' + ' ' + item.name + ' ' + list)
                     list.some(function(item) {
+
                         if (item.active) {
                             return item.active = false;
                         }
@@ -47,6 +62,23 @@
                     item.active = true;
                 };
 
+
             }
-        });
+        }).directive('onLoadClicker', function ($timeout) {
+                return {
+                    restrict: 'A',
+                    scope: {
+                        index: '=index'
+                    },
+                    link: function($scope, iElm) {
+                        if ($scope.index == 0) {
+                            $timeout(function() {
+
+                                iElm.triggerHandler('click');
+
+                            }, 0);
+                        }
+                    }
+                };
+            });
 })();

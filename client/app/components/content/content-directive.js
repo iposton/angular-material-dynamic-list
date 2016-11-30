@@ -20,23 +20,31 @@
                 self.selected = null;
                 self.lessons = [];
                 self.makeContact = makeContact;
+                self.incrementLikes = incrementLikes;
+                self.incrementDislikes = incrementDislikes;
 
-                // Load all registered Lessons
+                self.lessons = lessonService.ref;
 
-                lessonService
-                    .loadAllLessons()
-                    .then(function(lessons) {
-                        self.lessons = [].concat(lessons);
-                        self.selected = lessons[0];
-                    });
+                function incrementLikes (selected) {
 
-                // Listen for boradcast of select lesson to show content
-                // $scope.$on('selectLesson', function(event, lesson) {
+                    selected.like++;
+                    
+                    
+                    self.lessons.$save(selected);
+                    console.log('saving like for ' + selected.name + ' ' + selected.like);
+                  
+                    
+                }
 
-                //     self.selected = lesson;
-                // });
+                function incrementDislikes (selected) {
+                    selected.dislike++;
+                    
+                    
+                    self.lessons.$save(selected);
+                    console.log('saving like for ' + selected.name + ' ' + selected.dislike);
+                }
 
-                //self.selected = ll.selected;
+            
 
                 function makeContact(selectedLesson) {
 

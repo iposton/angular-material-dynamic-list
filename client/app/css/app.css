@@ -9,8 +9,6 @@ body {
   padding: 0px;
 }
 
-
-
 /* Toolbar area */
 
 .menu {
@@ -29,7 +27,8 @@ md-toolbar h3 {
 
 /* Sidenav area */
 
-md-list-item > button {
+md-list-item > button,
+md-list-item > a {
   width:100%;
   text-align:left !important;
 }
@@ -48,11 +47,8 @@ md-sidenav {
 }
 
 .container {
-  height: 90vh;
+  height: 92vh;
 }
-
-
-  
 
 
 /* Primary content area */
@@ -89,7 +85,7 @@ md-sidenav {
   height:36px;
 }
 
-md-button.menuBtn > md-icon {
+.md-button.menuBtn > md-icon {
   fill:white;
   width:24px;
   height:24px;

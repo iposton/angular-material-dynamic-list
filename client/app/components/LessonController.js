@@ -8,25 +8,23 @@
         $sceProvider.enabled(false);
     })
 
-    .controller('LessonController', ['lessonService', '$mdBottomSheet', '$mdSidenav', '$log', LessonController]);
+    .controller('LessonController', ['lessonService', '$mdBottomSheet', '$mdSidenav', '$scope', LessonController]);
 
-    function LessonController(lessonService, $mdBottomSheet, $mdSidenav) {
+    function LessonController(lessonService, $mdBottomSheet, $mdSidenav, $scope) {
 
         var self = this;
 
         self.selected = null;
         self.lessons = [];
         self.toggleLessonList = toggleLessonList;
-        
 
-        // Load all registered Lessons
+        self.lessons = lessonService.ref;
+       
 
-        lessonService
-            .loadAllLessons()
-            .then(function(lessons) {
-                self.lessons = [].concat(lessons);
-                self.selected = lessons[0];
-            });
+        // angular.forEach(lessons, function(item) {
+        //     firebase.$add(item);
+        // })
+       
 
         /**
          * Select the current avatars
@@ -36,7 +34,7 @@
         function toggleLessonList($event) {
             $mdSidenav('left').toggle();
             $mdBottomSheet.hide($event);
-        }  
+        }
 
     }
 })();
