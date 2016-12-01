@@ -19,7 +19,6 @@ function LessonService($q, $http, $firebaseArray) {
         }
       }
 
-// THE OLD DATA API BEFORE SAVING AND LOADING TO FIREBASE DB
   // var lessons = [
   //   {
   //     id: 0,
