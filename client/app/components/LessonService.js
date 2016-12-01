@@ -6,7 +6,7 @@ angular.module('lessons')
 // Lessons DataService
 function LessonService($q, $http, $firebaseArray) {
 
-  var ref = new Firebase(FIREBASE_URL);
+  var ref = new Firebase('https://my-lessons.firebaseio.com/');
   
       return {
         ref: $firebaseArray(ref),
@@ -19,7 +19,6 @@ function LessonService($q, $http, $firebaseArray) {
         }
       }
 
-// THE OLD DATA API BEFORE SAVING AND LOADING TO FIREBASE DB
   // var lessons = [
   //   {
   //     id: 0,
