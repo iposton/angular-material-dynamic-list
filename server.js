@@ -5,6 +5,10 @@ var app = express();
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8082;
+//GET FIREBASE
+var FIREBASE_URL = process.env.FIREBASE_URL;
+
+
 
 //GET FIREBASE
 var FIREBASE_URL = process.env.FIREBASE_URL;
