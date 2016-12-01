@@ -8,11 +8,6 @@ var port = process.env.PORT || 8082;
 //GET FIREBASE
 var FIREBASE_URL = process.env.FIREBASE_URL;
 
-
-
-//GET FIREBASE
-var FIREBASE_URL = process.env.FIREBASE_URL;
-
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/client/app'));
 
