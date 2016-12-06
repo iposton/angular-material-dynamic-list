@@ -8,16 +8,18 @@ function LessonService($q, $http, $firebaseArray) {
 
   var ref = new Firebase(FIREBASE_URL);
   
-      return {
-        ref: $firebaseArray(ref),
-        loadAllLessons: function() {
-          console.log('loading');
+  // THIS WAS THE OLD WAY I GOT THE FIRST ITEM TO BE SELECTED IN THE VIEW. 
+  /// I FOUND A NEW WAY BEACAUSE THE LIKE DISLIKE FEATURE DID NOT WORK UNTIL ITEM WAS CLICKED
+      // return {
+      //   ref: $firebaseArray(ref),
+      //   loadAllLessons: function() {
+      //     console.log('loading');
 
-         // Simulate async nature of real remote calls
-         return $q.when($firebaseArray(ref).$loaded());
+      //    // Simulate async nature of real remote calls
+      //    return $q.when($firebaseArray(ref).$loaded());
 
-        }
-      }
+      //   }
+      // }
 
   // var lessons = [
   //   {
@@ -92,16 +94,28 @@ function LessonService($q, $http, $firebaseArray) {
   //     websiteUrl: 'https://hungryturtlecode.com/',
   //     like: 0,
   //     dislike: 0
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'CSS-Tricks',
+  //     avatar: 'assets/img/csstricks.jpeg',
+  //     content: "This website is a must for front-end developers. If you need a advice for positioning, clear-both, or flex then GO TO HERE. Subscribe to the weekly newsletter it will have all the good stuff you'll need to make a web-page pretty neat.",
+  //     twitterUrl: 'https://twitter.com/real_css_tricks',
+  //     facebookUrl: 'https://www.facebook.com/CSSTricks/',
+  //     googleplusUrl: 'https://plus.google.com/communities/106425668610348127113/stream/d44e289d-b702-4a3b-8812-8726327f6bf1',
+  //     websiteUrl: 'https://css-tricks.com/',
+  //     like: 0,
+  //     dislike: 0
   //   }
   // ];
 
   // Promise-based API
-  // return {
-  //   ref: $firebaseArray(ref),
-  //   loadAllLessons: function() {
-  //     // Simulate async nature of real remote calls
-  //     return $q.when(lessons);
+  return {
+    ref: $firebaseArray(ref),
+    loadAllLessons: function() {
+      // Simulate async nature of real remote calls
+      return $q.when(lessons);
 
-  //   }
- // };
+    }
+ };
 }

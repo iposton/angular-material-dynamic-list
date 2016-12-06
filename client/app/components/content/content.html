@@ -7,11 +7,10 @@
 <md-button class="share" md-no-ink aria-label="Share with {{selected.name}}" ng-click="lc.makeContact(selected)">
     <md-icon md-svg-icon="share"></md-icon>
 </md-button>
-<!-- <button type="button" ng-click="lc.incrementLikes(selected)">Like {{selected.like}}</button> -->
-<!-- <button type="button" ng-click="lc.incrementDislikes(selected)">Dislike {{selected.dislike}}</button> -->
 <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-click="lc.incrementLikes(selected)">
     <md-icon md-svg-icon="thumbsup"></md-icon> Like {{selected.like}}
 </md-button>
 <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-click="lc.incrementDislikes(selected)">
     <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
 </md-button>
+<a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" style="position:absolute; bottom:5px; right:5px;"></a>

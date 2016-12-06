@@ -22,6 +22,9 @@
                 self.makeContact = makeContact;
                 self.incrementLikes = incrementLikes;
                 self.incrementDislikes = incrementDislikes;
+               
+
+                $scope.tweet = "The Sweetest websites that provide coding lessons! Go code now!"
 
                 self.lessons = lessonService.ref;
 

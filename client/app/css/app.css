@@ -203,3 +203,7 @@ md-list-item .md-focused {
   background: #fff!important;
 }
 
+md-list:focus {
+  outline: none;
+}
+

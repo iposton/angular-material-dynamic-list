@@ -20,10 +20,14 @@
 
         self.lessons = lessonService.ref;
        
+                    //  lessonService.loadAllLessons().then(function(lessons) {
 
-        // angular.forEach(lessons, function(item) {
-        //     firebase.$add(item);
-        // })
+                    //     angular.forEach(lessons, function(item) {
+                    //         lessonService.ref.$add(item);
+                    //     })
+
+                    // });
+        
        
 
         /**
