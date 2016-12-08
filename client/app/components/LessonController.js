@@ -19,6 +19,14 @@
         self.toggleLessonList = toggleLessonList;
 
         self.lessons = lessonService.ref;
+
+      $scope.classes = 'drop-theme-arrows-bounce-dark';
+      $scope.constrainToScrollParent = 'true';
+      $scope.constrainToWindow = 'true';
+      $scope.openOn = 'hover';
+      $scope.position = 'bottom center';
+
+      self.someValue = 'http://www.ianposton.com/';
        
                     //  lessonService.loadAllLessons().then(function(lessons) {
 

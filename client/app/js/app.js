@@ -1,4 +1,4 @@
- angular.module('MyApp', ['ngMaterial', 'lessons', 'firebase'])
+ angular.module('MyApp', ['ngMaterial', 'lessons', 'firebase', 'drop-ng'])
      .config(function($mdIconProvider, $mdThemingProvider) {
 
          $mdIconProvider.icon('share', '../assets/svg/share.svg', 24)

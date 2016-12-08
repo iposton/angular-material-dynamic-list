@@ -52,7 +52,7 @@
                 }
 
                 function setActive(item, list) {
-                    console.log('active is called...' + ' ' + item.name + ' ' + list)
+                    
                     list.some(function(item) {
 
                         if (item.active) {
