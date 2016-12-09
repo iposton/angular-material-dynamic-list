@@ -1,5 +1,5 @@
 # My Lessons - <a href="https://my-lessons.herokuapp.com/">Demo</a>
-This is a single page app which is a dynamic list showing my favorite websites that offer coding lessons.  
+<a href="https://codeclimate.com/github/iposton/angular-material-dynamic-list"><img src="https://codeclimate.com/github/iposton/angular-material-dynamic-list/badges/gpa.svg" /></a> This is a single page app which is a dynamic list showing my favorite websites that offer coding lessons.  
 
 ### Description
 This [application](https://my-lessons.herokuapp.com/) is made with angular.js (version 1.5.8) and the most current version of angular-material. This SPA app is hosted for free on heroku. The data is served by firebase which is a cloud based db. In this readme I will give you step by step how to deploy an angular app to heroku and add your data to firebase. Then I will instruct how to consume the api within your angular app. This app uses the most modern way to build angular apps by using components/directives in the index.html to keep your code organized. 
@@ -93,15 +93,16 @@ After you <code>git push</code> to your repo follow steps below. Assuming you ha
 Move data to firebase...
 <ol>
   <li>click create new project button once signed into Firebase and name your project.</li>
-  <li>from the overview dashboard of the project click on database in the side-nav.</code></li>
-  <li>in the data tab view you'll see a link icon with the ref next to it. it will look like this <code>https://new-project.firebaseio.com/. Copy this url to use as the ref in your code.</code></li>
-  <li>In the index.html you will need to add <code> <script src="https://cdn.firebase.com/v0/firebase.js"></script> <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script></code> </li>
+  <li>from the overview dashboard of the project click on database in the side-nav.</li>
+  <li>in the data tab view you'll see a link icon with the ref next to it. it will look like this <code>https://new-project.firebaseio.com/</code> Copy this url to use as the ref in your code.</li>
+  <li>In the index.html you will need to add <code> <script src="https://cdn.firebase.com/v0/firebase.js"></script></code> and <code> <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script> </code> </li>
   <li>Add 'firebase' as a dependency to your app's module.</li>
   <li>Then in your service.js file add '$firebaseArray' as a dependency. this is where you will add the ref to your db.</li>
-  Inside the service function use this to define the ref and return a promise to pipe data into the controller. 
-  ```js
+  <li>Inside the service function use this to define the ref and return a promise to pipe data into the controller.</li> 
+  <li>
+    ```js
      
-    someService.js  
+    //someService.js  
 
     var ref = new Firebase('https://new-project.firebaseio.com/');
 
@@ -117,9 +118,10 @@ Move data to firebase...
   };
 
   ```
-  Then in the controller add the service as a dependency, call the loadLessons function and pass in data. Then use this line to add the data to the firebase db.
-
-  ```js
+</li>
+  <li>Then in the controller add the service as a dependency, call the loadLessons function and pass in data. Then use this line to add the data to the firebase db.</li>
+  <li>
+     ```js
 
      controller.js 
 
@@ -132,6 +134,9 @@ Move data to firebase...
         });
 
   ```
+</li>
+
+ 
 </ol>
 
 ***
