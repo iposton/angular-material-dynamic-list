@@ -13,7 +13,7 @@ This app is for beginners to make an app and host it for free so that the app is
 * [drop-ng](https://github.com/stevenh77/drop-ng)
 * Heroku [Set up a free account ](https://www.heroku.com/)
 
-### Clone and serve the this app
+### Clone and serve this app
 You could simply clone this repo and run <code>npm install</code> and <code>bower install</code> then run <code>npm start</code> to serve the app on localhost, but there would be no data to show unless you setup a firebase endpoint. Add json array with data like this below in LessonService.js and change the lessons array in LessonController.js to <code>self.lessons = someService.lessons;</code> also comment out the firebase ref until it's setup. See firebase setup below.  
 
 ```js
@@ -71,7 +71,7 @@ You could simply clone this repo and run <code>npm install</code> and <code>bowe
     }
   ];
 
-```js 
+``` 
 
 
 ### Heroku Deploy 
@@ -114,8 +114,9 @@ Move data to firebase...
       return $q.when(lessons);
 
     }
- };
-  ```js
+  };
+
+  ```
   Then in the controller add the service as a dependency, call the loadLessons function and pass in data. Then use this line to add the data to the firebase db.
 
   ```js
@@ -129,6 +130,8 @@ Move data to firebase...
             })
 
         });
+
+  ```
 </ol>
 
 ***
@@ -154,7 +157,7 @@ How to make the first item selected on load. The content is shown based on which
                     }
                 };
             });
-```js
+```
 
 ```
 <!-- main-container.html -->
