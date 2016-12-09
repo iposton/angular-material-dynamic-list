@@ -28,14 +28,6 @@
 
         self.someValue = 'http://www.ianposton.com/';
 
-        //  lessonService.loadAllLessons().then(function(lessons) {
-
-        //     angular.forEach(lessons, function(item) {
-        //         lessonService.ref.$add(item);
-        //     })
-
-        // });
-
 
 
         /**

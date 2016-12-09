@@ -7,7 +7,7 @@
             return {
                 templateUrl: "components/content/content.html",
                 scope: {
-                   selected: '=selected'
+                    selected: '=selected'
                 },
                 controller: contentCtrl,
                 controllerAs: "lc"
@@ -22,32 +22,29 @@
                 self.makeContact = makeContact;
                 self.incrementLikes = incrementLikes;
                 self.incrementDislikes = incrementDislikes;
-               
+
 
                 $scope.tweet = "The Sweetest websites that provide coding lessons! Go code now!"
 
                 self.lessons = lessonService.ref;
 
-                function incrementLikes (selected) {
-
+                function incrementLikes(selected) {
                     selected.like++;
-                    
-                    
+
                     self.lessons.$save(selected);
-                    console.log('saving like for ' + selected.name + ' ' + selected.like);
-                  
-                    
+                    // console.log('saving like for ' + selected.name + ' ' + selected.like);
+
+
                 }
 
-                function incrementDislikes (selected) {
+                function incrementDislikes(selected) {
                     selected.dislike++;
-                    
-                    
+
                     self.lessons.$save(selected);
-                    console.log('saving like for ' + selected.name + ' ' + selected.dislike);
+                    // wconsole.log('saving like for ' + selected.name + ' ' + selected.dislike);
                 }
 
-            
+
 
                 function makeContact(selectedLesson) {
 

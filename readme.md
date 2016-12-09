@@ -1,5 +1,5 @@
-# My Lessons - <a href="https://my-lessons.herokuapp.com/">Demo</a>
-<a href="https://codeclimate.com/github/iposton/angular-material-dynamic-list"><img src="https://codeclimate.com/github/iposton/angular-material-dynamic-list/badges/gpa.svg" /></a> This is a single page app which is a dynamic list showing my favorite websites that offer coding lessons.  
+# My Lessons - <a href="https://my-lessons.herokuapp.com/">Demo</a> <a href="https://codeclimate.com/github/iposton/angular-material-dynamic-list"><img src="https://codeclimate.com/github/iposton/angular-material-dynamic-list/badges/gpa.svg" /></a>
+This is a single page app which is a dynamic list showing my favorite websites that offer coding lessons.  
 
 ### Description
 This [application](https://my-lessons.herokuapp.com/) is made with angular.js (version 1.5.8) and the most current version of angular-material. This SPA app is hosted for free on heroku. The data is served by firebase which is a cloud based db. In this readme I will give you step by step how to deploy an angular app to heroku and add your data to firebase. Then I will instruct how to consume the api within your angular app. This app uses the most modern way to build angular apps by using components/directives in the index.html to keep your code organized. 
@@ -99,8 +99,10 @@ Move data to firebase...
   <li>Add 'firebase' as a dependency to your app's module.</li>
   <li>Then in your service.js file add '$firebaseArray' as a dependency. this is where you will add the ref to your db.</li>
   <li>Inside the service function use this to define the ref and return a promise to pipe data into the controller.</li> 
-  <li>
-    ```js
+  <li>Then in the controller add the service as a dependency, call the loadLessons function and pass in data. Then use this line to add the data to the firebase db.</li>
+</ol>
+
+  ```js
      
     //someService.js  
 
@@ -118,10 +120,7 @@ Move data to firebase...
   };
 
   ```
-</li>
-  <li>Then in the controller add the service as a dependency, call the loadLessons function and pass in data. Then use this line to add the data to the firebase db.</li>
-  <li>
-     ```js
+  ```js
 
      controller.js 
 
@@ -134,10 +133,6 @@ Move data to firebase...
         });
 
   ```
-</li>
-
- 
-</ol>
 
 ***
 
@@ -145,6 +140,7 @@ Move data to firebase...
 How to make the first item selected on load. The content is shown based on which item in the side-nav is selected. This is data-binding so that the data in one component can be shown in the other component. I was able to add the first item to selected to show when the page is loaded but it was static and when I add the like/dislike feature I needed a better way to select the first item in the side-nav. I needed to click the side-nav as the page loaded. This directive was very helpful. 
 
 ```js
+
 .directive('onLoadClicker', function ($timeout) {
                 return {
                     restrict: 'A',
@@ -162,9 +158,10 @@ How to make the first item selected on load. The content is shown based on which
                     }
                 };
             });
-```
 
 ```
+
+```html
 <!-- main-container.html -->
 
 <a class="md-button" id="btn" ng-click="ll.selectLesson(l); ll.setActive(l, ll.lessons)" ng-class="{active: l.active}" on-load-clicker index="$index">click selection</a>
@@ -173,10 +170,12 @@ How to make the first item selected on load. The content is shown based on which
 I am passing in the index so that I can specify in the directive to only click the first item in the array of the ng-repeat otherwise it would click them all. This way I get active content that is dynamic and ready to be called to action. Hence likes or dislikes will be saved to the db. 
 
 ###Features
-Like Dislike feature. Popover feature. 
+I added two features I am very proud of. I wanted to add a like/dislike feature so that people visiting this app can interact with the data. It's a simple incrementing function that adds one when the button is clicked then it's saved in the db. It's not perfect I would need to add authentication to limit each user to one click per item, but it is still is a fun feature. 
+
+The other feature is a popover that displays a name and the link to the this repo. I used a module called [drop-ng](https://github.com/stevenh77/drop-ng). This is a directive that uses the tether.js library and makes it compatible with angular. It was easy to set up and use in the app.  
 
 ###Refs
-The angular-material course on egghead. drop-ng.
+The angular-material course on egghead. [https://egghead.io/lessons/angularjs-angular-material-installing-with-npm](https://egghead.io/lessons/angularjs-angular-material-installing-with-npm)
 
 
 ####[My Lessons](https://my-lessons.herokuapp.com/)
