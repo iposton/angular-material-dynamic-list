@@ -20,23 +20,23 @@
 
         self.lessons = lessonService.ref;
 
-      $scope.classes = 'drop-theme-arrows-bounce-dark';
-      $scope.constrainToScrollParent = 'true';
-      $scope.constrainToWindow = 'true';
-      $scope.openOn = 'hover';
-      $scope.position = 'bottom center';
+        $scope.classes = 'drop-theme-arrows-bounce-dark';
+        $scope.constrainToScrollParent = 'true';
+        $scope.constrainToWindow = 'true';
+        $scope.openOn = 'hover';
+        $scope.position = 'bottom center';
 
-      self.someValue = 'http://www.ianposton.com/';
-       
-                    //  lessonService.loadAllLessons().then(function(lessons) {
+        self.someValue = 'http://www.ianposton.com/';
 
-                    //     angular.forEach(lessons, function(item) {
-                    //         lessonService.ref.$add(item);
-                    //     })
+        //  lessonService.loadAllLessons().then(function(lessons) {
 
-                    // });
-        
-       
+        //     angular.forEach(lessons, function(item) {
+        //         lessonService.ref.$add(item);
+        //     })
+
+        // });
+
+
 
         /**
          * Select the current avatars
