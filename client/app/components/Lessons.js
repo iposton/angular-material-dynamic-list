@@ -3,4 +3,4 @@
 
   angular.module('lessons', ['ngMaterial', 'firebase', 'drop-ng']);
   
-})();
+}());

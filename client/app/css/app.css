@@ -6,8 +6,8 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     height: auto;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -44,12 +44,9 @@ md-list .md-button.selected {
 }
 
 md-sidenav md-list {
-    padding: 0px 0px 8px 0px;
+    padding: 0 0 8px 0;
 }
 
-md-sidenav {
-    /*height: 100%;*/
-}
 
 .container {
     height: 92vh;
@@ -134,7 +131,7 @@ md-toolbar h1 {
     /*border-radius: 50%;*/
     display: inline-block;
     overflow: hidden;
-    margin: 0px;
+    margin: 0;
     vertical-align: middle;
     zoom: 0.70;
     transform: translateZ(0);
@@ -163,7 +160,6 @@ span.name {
     min-width: 30px;
 }
 
-.md-list img {}
 
 
 /*md-bottom-sheet md-icon {
@@ -235,4 +231,4 @@ button {
 .drop-element.drop-theme-arrows-bounce-dark .drop-content {
   
     opacity: 0.75;
-  }
+}

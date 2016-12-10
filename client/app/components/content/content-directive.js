@@ -32,7 +32,7 @@
                     selected.like++;
 
                     self.lessons.$save(selected);
-                    // console.log('saving like for ' + selected.name + ' ' + selected.like);
+                   
 
 
                 }
@@ -41,7 +41,7 @@
                     selected.dislike++;
 
                     self.lessons.$save(selected);
-                    // wconsole.log('saving like for ' + selected.name + ' ' + selected.dislike);
+                    
                 }
 
 
@@ -77,4 +77,4 @@
 
             }
         });
-})();
+}());
