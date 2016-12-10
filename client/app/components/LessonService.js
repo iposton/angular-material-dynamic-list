@@ -6,7 +6,7 @@ angular.module('lessons')
 // Lessons DataService
 function LessonService($q, $http, $firebaseArray) {
 
-  var ref = new Firebase('https://my-lessons.firebaseio.com/');
+  var ref = new Firebase(FIREBASE_URL);
 
   // Promise-based API
   return {
