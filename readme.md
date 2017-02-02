@@ -217,7 +217,7 @@ I added two features I am very proud of. I wanted to add a like/dislike feature 
 
 The other feature is a popover that displays a name and the link to this repo. I used a module called [drop-ng](https://github.com/stevenh77/drop-ng). This is a directive that uses the tether.js library and makes it compatible with angular. It was easy to set up and use in the app. 
 
-Twitter share button. I used a plugin for this. I added the module script tag to index.html and used the directive in the content.html.
+Twitter share button. I used a plugin for this. I added the module script tag to index.html and used the directive in the content.html. An easy way to allow others to share your work on social media. 
 
 ```html
 
@@ -226,12 +226,10 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 <!-- content.html -->
 <a twitter data-text="{{tweet}}" data-url="https://name-of-app.herokuapp.com/" style="position:absolute; bottom:5px; right:5px;"></a>
-
-Note: Keep checking back in as I will add some more features to this app. 
-
+ 
 ``` 
 
-An easy way to allow others to share your work on social media. 
+Note: Keep checking back in as I will add some more features to this app.
 
 ###References
 The angular-material course on egghead. [https://egghead.io/lessons/angularjs-angular-material-installing-with-npm](https://egghead.io/lessons/angularjs-angular-material-installing-with-npm)

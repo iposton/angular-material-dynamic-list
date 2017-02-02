@@ -1,0 +1,14 @@
+<section ng-if="!currentUser" class="md-form">
+    <md-input-container layout-align="end center">
+        <label>Email</label>
+        <input ng-model="newUser.email" type="email">
+    </md-input-container>
+    <md-input-container layout-align="end center">
+        <label>Password</label>
+        <input ng-model="newUser.password" type="password">
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click="login(newUser.email, newUser.password)">Log In</md-button>
+</section>
+<section ng-if="currentUser">
+    <md-button ng-click="signout()" class="md-raised md-accent">Sign Out</md-button>
+</section>

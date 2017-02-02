@@ -12,13 +12,11 @@
   
 </head>
 
-<body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as ln">
+<body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as ln" ng-keydown="showPrompt($event)">
     <md-toolbar layout="row">
         <md-button class="menu" ng-click="ln.toggleLessonList()" hide-gt-sm aria-label="Show lesson list sidenav">
             <md-icon md-svg-icon="menu"></md-icon>
         </md-button>
-       
-       
         
          <h1>My Lessons</h1> 
          <drop classes='classes'
@@ -37,7 +35,17 @@
 
          </drop>
         
+
+        <span flex></span>
+        <div class="admin" ng-if="currentUser">
+
+            <p>admin</p>
+
+        </div>  
+        
+        
     </md-toolbar>
+  
 
     <main-container></main-container>
 
@@ -62,13 +70,15 @@
     
     <!-- Firebase -->
 
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <!-- <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script> -->
+    <!-- <script src="https://cdn.firebase.com/v0/firebase.js"></script> -->
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-    <!-- AngularFire -->
     <!-- <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script> -->
+    <script src="config/firebase-config.js"></script>
+    
+
 </body>
 
 </html>

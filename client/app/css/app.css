@@ -232,3 +232,26 @@ button {
   
     opacity: 0.75;
 }
+
+/* ADMIN */
+
+.admin {
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    background: #e74c3c;
+    color: #fff;
+    margin: 18px 5px 0 0;
+}
+
+.admin p {
+    font-size: 16px;
+    padding: 0;
+    margin: 5px;
+}
+
+/* FORM */
+
+.md-form {
+    margin: 15px 10px 0 10px;
+}
