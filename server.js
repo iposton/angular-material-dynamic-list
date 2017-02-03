@@ -19,11 +19,11 @@ app.get('/', function(req, res) {
 });
 
 app.get('/firebaseurl.js', function(req, res){
-      res.send("var FIREBASE_URL='"+process.env.FIREBASE_URL+"'",
-               "var API_KEY='"+process.env.API_KEY+"'",
-               "var AUTH_DOM='"+process.env.AUTH_DOM+"'" ,
-               "var STRG_BUCKET='"+process.env.STRG_BUCKET+"'",
-               "var MSG_SND_ID='"+process.env.MSG_SND_ID+"'");
+      res.send("var FIREBASE_URL='"+process.env.FIREBASE_URL+"'");
+      res.send("var API_KEY='"+process.env.API_KEY+"'");
+      res.send("var AUTH_DOM='"+process.env.AUTH_DOM+"'");
+      res.send("var STRG_BUCKET='"+process.env.STRG_BUCKET+"'");
+      res.send("var MSG_SND_ID='"+process.env.MSG_SND_ID+"'");
 });
 
 app.listen(port, function() {
