@@ -1,6 +1,5 @@
 <img ng-src="{{selected.avatar}}" class="avatar">
-<!-- <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon> -->
-<a ng-href="{{selected.websiteUrl}}" target="_blank"><h2>{{selected.name}}</h2></a>
+<a ng-href="{{selected.websiteUrl}}" target="_blank" title="go to {{selected.websiteUrl}}"><h2>{{selected.name}}</h2></a>
 <p>
     {{selected.content}}
 </p>
@@ -13,4 +12,6 @@
 <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-click="lc.incrementDislikes(selected)">
     <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
 </md-button>
-<a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" style="float: right"></a>
+<div>
+    <a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" style="float: right"></a>
+</div>

@@ -18,6 +18,8 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+// for heroku config vars
+// TODO: find a better way to pull config var keys into front-end
 app.get('/firebaseurl.js', function(req, res){
       res.send("var FIREBASE_URL='"+process.env.FIREBASE_URL+"'");
 });

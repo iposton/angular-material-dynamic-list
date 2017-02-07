@@ -1,11 +1,11 @@
 <div class="container" layout="row" flex>
+
     <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
         <md-list ng-click="ll.toggleLessonList()">
             <md-list-item ng-repeat="l in ll.lessons">
               
                     <a class="md-button" id="btn" ng-click="ll.selectLesson(l); ll.setActive(l, ll.lessons)" ng-class="{active: l.active}" on-load-clicker index="$index">
                     <img ng-src="{{l.avatar}}" class="png-icon avatar">
-                    <!-- <md-icon ng-src="{{l.avatar}}" class="avatar"></md-icon> -->
                     {{l.name}}
                     </a>
               
@@ -13,9 +13,10 @@
             </md-list-item>
         </md-list>
     </md-sidenav>
-
-    <md-content id="content" flex>
-        <content selected="ll.selected"></content>
-    </md-content>
-    
+   
+        <md-content id="content" flex>
+        <content selected="ll.selected" tweet="tweet"></content>
+        </md-content>
+   
 </div>
+

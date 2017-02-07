@@ -1,3 +1,7 @@
+<md-toolbar>
+    <h2 class="md-toolbar-tools" ng-if="!currentUser">Admin Log In</h2>
+    <h2 class="md-toolbar-tools" ng-if="currentUser">Admin Sign Out</h2>
+</md-toolbar>
 <section ng-if="!currentUser" class="md-form">
     <md-input-container layout-align="end center">
         <label>Email</label>

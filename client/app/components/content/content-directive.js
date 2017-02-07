@@ -7,7 +7,8 @@
             return {
                 templateUrl: "components/content/content.html",
                 scope: {
-                    selected: '=selected'
+                    selected: '=selected',
+                    tweet: '=tweet'
                 },
                 controller: contentCtrl,
                 controllerAs: "lc"
@@ -18,15 +19,18 @@
                 var self = this;
 
                 self.selected = null;
+                $scope.tweet = null;
                 self.lessons = [];
                 self.makeContact = makeContact;
                 self.incrementLikes = incrementLikes;
                 self.incrementDislikes = incrementDislikes;
 
 
-                $scope.tweet = "The Sweetest websites that provide coding lessons! Go code now!"
+                
 
                 self.lessons = lessonService.ref;
+
+
 
                 function incrementLikes(selected) {
                     selected.like++;
@@ -75,6 +79,8 @@
                     }
                 }
 
+
+
             }
-        });
+        })
 }());

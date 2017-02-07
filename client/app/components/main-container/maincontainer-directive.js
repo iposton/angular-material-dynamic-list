@@ -11,9 +11,12 @@
             }
 
             function mainContainerCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $timeout) {
+ 
                 var self = this;
 
                 self.selected = null;
+                $scope.tweet = null;
+            
                 self.lessons = [];
                 self.selectLesson = selectLesson;
                 self.setActive = setActive;
@@ -24,8 +27,8 @@
                 function selectLesson(lesson) {
                     self.selected = lesson;
                     $mdBottomSheet.hide(self.selected);
-                    //TODO: FIND A WAY TO CLOSE SIDENAV ON SMALL SCREEN ON SELECTED
                     $mdSidenav('left').toggle();
+                    $scope.getTweet();
                 }
 
                 function setActive(item, list) {
@@ -37,6 +40,10 @@
                         }
                     });
                     item.active = true;
+                }
+
+                $scope.getTweet = function () {
+                    $scope.tweet = "Check out " + self.selected.name + " at " + self.selected.websiteUrl + ". More info about where to find coding lessons.";
                 }
 
 

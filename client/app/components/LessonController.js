@@ -20,6 +20,10 @@
 
         self.lessons = lessonService.ref;
 
+        self.id = 100;
+        self.like = 0;
+        self.dislike = 0;
+
         $scope.classes = 'drop-theme-arrows-bounce-dark';
         $scope.constrainToScrollParent = 'true';
         $scope.constrainToWindow = 'true';
@@ -52,18 +56,37 @@
                 if (user) {
                     // User is signed in.
                     $scope.currentUser = user;
+
+                    //if user add lesson available
+                    $scope.showNew = function($event) {
+                        $scope.getCurrentUser();
+                        //if ctrl and the n key are pressed at same time new modal opens
+                        if ($event.keyCode == 78 && $event.ctrlKey && $scope.currentUser) {
+                            var parentEl = angular.element(document.body);
+                            $mdDialog.show({
+                                parent: parentEl,
+                                targetEvent: $event,
+                                templateUrl: 'components/newModal.html',
+                                preserveScope: true,
+                                controller: LessonController
+                            });
+                        };
+                    }
+
                 } else {
                     // No user is signed in.
                     $scope.currentUser = null;
+                    user = null;
                 }
             });
         }
 
         $scope.getCurrentUser();
 
-        //display forgot password modal
-        $scope.showPrompt = function($event) {
+        //display login modal
+        $scope.showLogin = function($event) {
             $scope.getCurrentUser();
+            //if ctrl and the a key are pressed at same time login modal opens
             if ($event.keyCode == 65 && $event.ctrlKey) {
                 var parentEl = angular.element(document.body);
                 $mdDialog.show({
@@ -77,8 +100,7 @@
         }
 
         $scope.login = function(email, password) {
-            
-            //var auth = firebase.auth();
+
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .catch(function(error) {
                     // Handle Errors here.
@@ -96,20 +118,30 @@
 
         $scope.signout = function() {
             firebase.auth().signOut().then(function() {
-              // Sign-out successful.
-              window.localStorage.removeItem("firebase:host:my-lessons.firebaseio.com");
-              $scope.getCurrentUser();
-              $mdDialog.hide();
+                // Sign-out successful.
+                window.localStorage.removeItem("firebase:host:my-lessons.firebaseio.com");
+                $scope.getCurrentUser();
+                $mdDialog.hide();
 
             }, function(error) {
-              // An error happened.
-              console.log(error);
+                // An error happened.
+                console.log(error);
             });
-           
+
         }
 
         $scope.resetForm = function() {
             $scope.newUser = { email: '', password: '' };
+        }
+
+        // add a new lesson website
+        $scope.saveLesson = function(lesson) {
+            self.lessons.$add(lesson);
+            $mdDialog.hide();
+        }
+
+        $scope.clearForm = function() {
+            $scope.lessons = { avatar: '', name: '', content: '', websiteUrl: '', twitterUrl: '', googleplusUrl: '', facebookUrl: '' };
         }
 
 

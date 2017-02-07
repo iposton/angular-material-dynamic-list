@@ -14,21 +14,43 @@
              .accentPalette('red');
 
      }).directive('twitter', [
-    function() {
-        return {
-            link: function(scope, element, attr) {
-                setTimeout(function() {
-                        twttr.widgets.createShareButton(
-                            attr.url,
-                            element[0],
-                            function(el) {}, {
-                                count: 'none',
-                                text: attr.text
-                            }
-                        );
-                });
-            }
-        }
-    }
-]);
-     
+         function() {
+             return {
+                 link: function(scope, element, attr) {
+                     var i = 0;
+                     var idNum = i.toString();
+
+                     scope.$watch('tweet', function(newValue, oldValue) {
+
+                         if (newValue !== oldValue) {
+                             // covert i to string for id of twitter share btn
+                             idNum = i.toString();
+                             // concat i to string for new id when one button is removed
+                             var $ = function(id) { return document.getElementById(id); };
+                             var twitter = $('twitter-widget-' + idNum);
+                            // increment i and remove old twitter share button by id
+                             if (oldValue && twitter) {
+                                 i += 1;
+                                 twitter.remove();
+
+                             }
+                             // watch and create new twitter share button when tweet value changes
+                             setTimeout(function() {
+                                 twttr.widgets.createShareButton(
+                                     attr.url,
+                                     element[0],
+                                     function(el) {}, {
+                                         count: 'none',
+                                         text: attr.text
+                                     }
+                                 );
+
+                             });
+
+                         }
+                     }, true);
+
+                 }
+             }
+         }
+     ]);

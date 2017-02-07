@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lessons')
-.service('lessonService', ['$q', '$http', '$firebaseArray', LessonService]);
+.service('lessonService', ['$q', '$http', '$firebaseArray', LessonService])
 
 // Lessons DataService
 function LessonService($q, $http, $firebaseArray) {
