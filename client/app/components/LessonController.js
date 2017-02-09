@@ -61,7 +61,7 @@
                     $scope.showNew = function($event) {
                         $scope.getCurrentUser();
                         //if ctrl and the n key are pressed at same time new modal opens
-                        if ($event.keyCode == 78 && $event.ctrlKey && $scope.currentUser) {
+                        if ($event.keyCode === 78 && $event.ctrlKey && $scope.currentUser) {
                             var parentEl = angular.element(document.body);
                             $mdDialog.show({
                                 parent: parentEl,
@@ -70,7 +70,7 @@
                                 preserveScope: true,
                                 controller: LessonController
                             });
-                        };
+                        }
                     }
 
                 } else {
@@ -87,7 +87,7 @@
         $scope.showLogin = function($event) {
             $scope.getCurrentUser();
             //if ctrl and the a key are pressed at same time login modal opens
-            if ($event.keyCode == 65 && $event.ctrlKey) {
+            if ($event.keyCode === 65 && $event.ctrlKey) {
                 var parentEl = angular.element(document.body);
                 $mdDialog.show({
                     parent: parentEl,
@@ -96,7 +96,7 @@
                     preserveScope: true,
                     controller: LessonController
                 });
-            };
+            }
         }
 
         $scope.login = function(email, password) {
