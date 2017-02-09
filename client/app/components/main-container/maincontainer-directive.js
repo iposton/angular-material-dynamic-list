@@ -22,6 +22,7 @@
                 self.setActive = setActive;
                 // PULL IN DATA FROM FIREBASE
                 self.lessons = lessonService.ref;
+                
 
 
                 function selectLesson(lesson) {
@@ -29,6 +30,7 @@
                     $mdBottomSheet.hide(self.selected);
                     $mdSidenav('left').toggle();
                     $scope.getTweet();
+                    
                 }
 
                 function setActive(item, list) {
@@ -40,6 +42,7 @@
                         }
                     });
                     item.active = true;
+
                 }
 
                 $scope.getTweet = function () {

@@ -9,6 +9,7 @@
                 scope: {
                     selected: '=selected',
                     tweet: '=tweet'
+
                 },
                 controller: contentCtrl,
                 controllerAs: "lc"
@@ -24,28 +25,31 @@
                 self.makeContact = makeContact;
                 self.incrementLikes = incrementLikes;
                 self.incrementDislikes = incrementDislikes;
-
-
-                
-
+                // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
-
 
 
                 function incrementLikes(selected) {
                     selected.like++;
-
                     self.lessons.$save(selected);
-                   
+
+                    var voted = true;
+                    var votedValue = 'like';
+                    selected.voted = voted;
+                    selected.votedValue = votedValue;
 
 
                 }
 
                 function incrementDislikes(selected) {
                     selected.dislike++;
-
                     self.lessons.$save(selected);
-                    
+
+                    var voted = true;
+                    var votedValue = 'dislike';
+                    selected.voted = voted;
+                    selected.votedValue = votedValue;
+
                 }
 
 

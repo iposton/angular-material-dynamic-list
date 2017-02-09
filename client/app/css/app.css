@@ -106,6 +106,10 @@ md-sidenav md-list {
     max-width: 500px;
 }
 
+.vote-text {
+    color: #27ae60;
+}
+
 
 /* Utils */
 
@@ -255,3 +259,5 @@ button {
 .md-form {
     margin: 15px 10px 0 10px;
 }
+
+

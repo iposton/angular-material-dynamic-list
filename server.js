@@ -28,22 +28,6 @@ app.get('/firebaseurl.js', function(req, res){
        res.end();
 });
 
-// app.get('/apikey.js', function(req, res){    
-//       res.send("var API_KEY='"+process.env.API_KEY+"'");   
-// });
-
-// app.get('/authdom.js', function(req, res){
-//       res.send("var AUTH_DOM='"+process.env.AUTH_DOM+"'");
-// });
-
-// app.get('/strgbucket.js', function(req, res){
-//       res.send("var STRG_BUCKET='"+process.env.STRG_BUCKET+"'");
-// });
-
-// app.get('/msgid.js', function(req, res){
-//       res.send("var MSG_SND_ID='"+process.env.MSG_SND_ID+"'");
-// });
-
 
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
