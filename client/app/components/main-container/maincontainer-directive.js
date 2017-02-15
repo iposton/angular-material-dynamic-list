@@ -25,12 +25,11 @@
                 self.selectLesson = selectLesson;
                 self.setActive = setActive;
                 self.deleteLesson = deleteLesson;
+
                 // PULL IN DATA FROM FIREBASE
                 self.lessons = lessonService.ref;
-                var parentEl = angular.element(document.body);
-                
-               
 
+                var parentEl = angular.element(document.body);
 
                 function selectLesson(lesson) {
                     self.selected = lesson;

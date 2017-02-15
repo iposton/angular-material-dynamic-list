@@ -16,21 +16,30 @@
 
         self.selected = null;
         self.lessons = [];
+
+        // Define Functions
         self.toggleLessonList = toggleLessonList;
+        self.getCurrentUser = getCurrentUser;
+        self.showLogin = showLogin;
+        self.login = login;
+        self.signout = signout;
+        self.resetForm = resetForm;
+
 
         // GET DATA FROM FIREBASE
         self.lessons = lessonService.ref;
 
         // VALUES FOR THE POPOVER ON NAV
-        $scope.classes = 'drop-theme-arrows-bounce-dark';
-        $scope.constrainToScrollParent = 'true';
-        $scope.constrainToWindow = 'true';
-        $scope.openOn = 'hover';
-        $scope.position = 'bottom center';
+        self.classes = 'drop-theme-arrows-bounce-dark';
+        self.constrainToScrollParent = 'true';
+        self.constrainToWindow = 'true';
+        self.openOn = 'hover';
+        self.position = 'bottom center';
 
-        self.someValue = 'http://www.ianposton.com/';
+        self.myWebsite = 'http://www.ianposton.com/';
+        self.myRepo = 'https://github.com/iposton/angular-material-dynamic-list';
 
-        // FOR MDDIALOG 
+        // Global for $mdDialog 
         var parentEl = angular.element(document.body);
 
 
@@ -49,30 +58,30 @@
          * @param menuId
          */
 
+        // Login/Signout globals 
+        self.newUser = { email: '', password: '' };
+        self.currentUser = null;
 
-        $scope.newUser = { email: '', password: '' };
-        $scope.currentUser = null;
-
-        $scope.getCurrentUser = function() {
+        function getCurrentUser() {
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
                     // User is signed in.
-                    $scope.currentUser = user;
+                    self.currentUser = user;
 
                 } else {
                     // No user is signed in.
-                    $scope.currentUser = null;
+                    self.currentUser = null;
                     user = null;
                 }
             });
         }
 
         // SEE IF THERE IS A USER SIGNED IN WHEN PAGE LOADS
-        $scope.getCurrentUser();
+        self.getCurrentUser();
 
         //display login modal
-        $scope.showLogin = function($event) {
-            $scope.getCurrentUser();
+        function showLogin($event) {
+            self.getCurrentUser();
             //if ctrl and the a key are pressed at same time login modal opens
             if ($event.keyCode === 65 && $event.ctrlKey) {
 
@@ -81,12 +90,13 @@
                     targetEvent: $event,
                     templateUrl: 'components/loginModal.html',
                     preserveScope: true,
-                    controller: LessonController
+                    controller: LessonController,
+                    controllerAs: 'vm'
                 });
             }
         }
 
-        $scope.login = function(email, password) {
+        function login(email, password) {
 
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .catch(function(error) {
@@ -97,17 +107,17 @@
                     // ...
                 })
                 .then(function(user) {
-                    $scope.currentUser = user;
-                    $scope.resetForm();
+                    self.currentUser = user;
+                    self.resetForm();
                     $mdDialog.hide();
                 })
         }
 
-        $scope.signout = function() {
+        function signout() {
             firebase.auth().signOut().then(function() {
                 // Sign-out successful.
                 //window.localStorage.removeItem("SIGNOUT_URL");
-                $scope.getCurrentUser();
+                self.getCurrentUser();
                 $mdDialog.hide();
 
             }, function(error) {
@@ -117,8 +127,8 @@
 
         }
 
-        $scope.resetForm = function() {
-            $scope.newUser = { email: '', password: '' };
+        function resetForm() {
+            self.newUser = { email: '', password: '' };
         }
 
 

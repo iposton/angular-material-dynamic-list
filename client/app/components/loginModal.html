@@ -1,18 +1,18 @@
 <md-toolbar>
-    <h2 class="md-toolbar-tools" ng-if="!currentUser">Admin Log In</h2>
-    <h2 class="md-toolbar-tools" ng-if="currentUser">Admin Sign Out</h2>
+    <h2 class="md-toolbar-tools" ng-if="!vm.currentUser">Admin Log In</h2>
+    <h2 class="md-toolbar-tools" ng-if="vm.currentUser">Admin Sign Out</h2>
 </md-toolbar>
-<section ng-if="!currentUser" class="md-form">
+<section ng-if="!vm.currentUser" class="md-form">
     <md-input-container layout-align="end center">
         <label>Email</label>
-        <input ng-model="newUser.email" type="email">
+        <input ng-model="vm.newUser.email" type="email">
     </md-input-container>
     <md-input-container layout-align="end center">
         <label>Password</label>
-        <input ng-model="newUser.password" type="password">
+        <input ng-model="vm.newUser.password" type="password">
     </md-input-container>
-    <md-button class="md-raised md-primary" ng-click="login(newUser.email, newUser.password)">Log In</md-button>
+    <md-button class="md-raised md-primary" ng-click="vm.login(vm.newUser.email, vm.newUser.password)">Log In</md-button>
 </section>
-<section ng-if="currentUser">
-    <md-button ng-click="signout()" class="md-raised md-accent">Sign Out</md-button>
+<section ng-if="vm.currentUser">
+    <md-button ng-click="vm.signout()" class="md-raised md-accent">Sign Out</md-button>
 </section>
