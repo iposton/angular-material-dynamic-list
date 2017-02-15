@@ -1,45 +1,45 @@
 <md-toolbar>
-    <h2 class="md-toolbar-tools">Add Lesson</h2>
+    <h2 class="md-toolbar-tools">Edit Lesson</h2>
 </md-toolbar>
 <md-content layout-padding>
     <form>
     <div style="display:none">
-        <input type="text" id="id" ng-model="lessons.id" ng-init="lessons.id=100" value="100">
-        <input type="text" id="like" ng-model="lessons.like" ng-init="lessons.like=0" value="0">
-        <input type="text" id="dislike" ng-model="lessons.dislike" ng-init="lessons.dislike=0" value="0"> 
+        <input type="text" id="id" ng-model="vm.selected.id" ng-init="vm.selected.id" value="vm.selected.id">
+        <input type="text" id="like" ng-model="vm.selected.like" ng-init="vm.selected.like" value="vm.selected.like">
+        <input type="text" id="dislike" ng-model="vm.selected.dislike" ng-init="vm.selected.dislike" value="vm.selected.dislike"> 
     </div>
    
         <md-input-container class="md-block">
             <label for="name">Name</label>
-            <input type="text" id="name" ng-model="lessons.name" md-autofocus>
+            <input type="text" id="name" ng-model="vm.selected.name" md-autofocus>
         </md-input-container>
         <md-input-container class="md-block">
             <label for="avatar">Link to image</label>
-            <input type="text" id="avatar" ng-model="lessons.avatar">
+            <input type="text" id="avatar" ng-model="vm.selected.avatar">
         </md-input-container>
         <md-input-container class="md-block">
             <label for=""></label>
-            <textarea type="text" id="content" ng-model="lessons.content">Content</textarea>
+            <textarea type="text" id="content" ng-model="vm.selected.content">Content</textarea>
         </md-input-container>
         <md-input-container class="md-block">
             <label for="facebookUrl">Facebook Link</label>
-            <input type="text" id="facebookUrl" ng-model="lessons.facebookUrl">
+            <input type="text" id="facebookUrl" ng-model="vm.selected.facebookUrl">
         </md-input-container>
         <md-input-container class="md-block">
             <label for="googleplusUrl">Googleplus Link</label>
-            <input type="text" id="googleplusUrl" ng-model="lessons.googleplusUrl">
+            <input type="text" id="googleplusUrl" ng-model="vm.selected.googleplusUrl">
         </md-input-container>
         <md-input-container class="md-block">
             <label for="twitterUrl">Twitter Link</label>
-            <input type="text" id="twitterUrl" ng-model="lessons.twitterUrl">
+            <input type="text" id="twitterUrl" ng-model="vm.selected.twitterUrl">
         </md-input-container>
         <md-input-container class="md-block">
             <label for="twitterUrl">Website Link</label>
-            <input type="text" id="websiteUrl" ng-model="lessons.websiteUrl">
+            <input type="text" id="websiteUrl" ng-model="vm.selected.websiteUrl">
         </md-input-container>
         <section layout="row">
-            <md-button class="md-raised md-button md-ink-ripple" ng-click="saveLesson(lessons)" ng-if="!editing">Save</md-button>
-            <!-- <md-button class="md-raised md-button md-ink-ripple" ng-if="editing" ng-click="saveEdit()">Save Edit</md-button> -->
+            
+            <md-button class="md-raised md-button md-ink-ripple" ng-click="saveEdit(vm.selected)">Save Edit</md-button>
             <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="clearForm()">Cancel</md-button>
         </section>
         <!-- <pre>{{ lessons | json }}</pre> -->

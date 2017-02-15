@@ -15,7 +15,7 @@
                 controllerAs: "lc"
             }
 
-            function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope) {
+            function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog) {
 
                 var self = this;
 
@@ -27,6 +27,9 @@
                 self.incrementDislikes = incrementDislikes;
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
+                //self.lesson = self.lessons.$getRecord(self.lessons.id);
+
+               
 
 
                 function incrementLikes(selected) {
@@ -52,8 +55,7 @@
 
                 }
 
-
-
+                
                 function makeContact(selectedLesson) {
 
                     $mdBottomSheet.show({

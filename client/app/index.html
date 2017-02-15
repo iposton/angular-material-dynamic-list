@@ -12,7 +12,7 @@
   
 </head>
 
-<body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as ln" ng-keydown="showLogin($event); showNew($event)">
+<body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as ln" ng-keydown="showLogin($event)">
     <md-toolbar layout="row">
         <md-button class="menu" ng-click="ln.toggleLessonList()" hide-gt-sm aria-label="Show lesson list sidenav">
             <md-icon md-svg-icon="menu"></md-icon>
@@ -47,7 +47,7 @@
     </md-toolbar>
   
 
-    <main-container></main-container>
+    <main-container currentuser="currentUser"></main-container>
 
 
 

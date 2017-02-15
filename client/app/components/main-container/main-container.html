@@ -9,14 +9,32 @@
                     {{l.name}}
                     </a>
               
-               
+             
+            </md-list-item>
+            <md-list-item ng-if="currentuser">
+              
+                    <a class="md-button" id="btn" ng-click="showNew($event)" ng-class="{active: l.active}">
+                    + Add Lesson
+                    </a>
+              
+             
             </md-list-item>
         </md-list>
     </md-sidenav>
    
         <md-content id="content" flex>
         <content selected="ll.selected" tweet="tweet"></content>
+
+        <div layout="row" ng-if="currentuser">
+                        <md-button class="md-raised md-button md-ink-ripple" ng-click="showEdit($event)">
+                            Edit
+                        </md-button>
+                        <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="ll.deleteLesson($event, ll.selected)">
+                            Delete
+                        </md-button>
+                    </div>
         </md-content>
+
    
 </div>
 
