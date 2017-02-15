@@ -18,44 +18,33 @@
             function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog) {
 
                 var self = this;
-
-                self.selected = null;
-                $scope.tweet = null;
-                self.lessons = [];
+                // DEFINE FUNCTIONS
                 self.makeContact = makeContact;
-                self.incrementLikes = incrementLikes;
-                self.incrementDislikes = incrementDislikes;
+                self.incrementVotes = incrementVotes;
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
-                //self.lesson = self.lessons.$getRecord(self.lessons.id);
 
-               
+                // GLOBAL VARS FOR INCEMENT FUNCTION
+                var voted = true;
+                var votedValue = null;
 
+                function incrementVotes(selected, vote) {
 
-                function incrementLikes(selected) {
-                    selected.like++;
-                    self.lessons.$save(selected);
+                    if (vote === selected.like) {
+                        selected.like += 1;
+                        self.lessons.$save(selected);
+                        votedValue = 'like';
 
-                    var voted = true;
-                    var votedValue = 'like';
+                    } else {
+                        selected.dislike += 1;
+                        self.lessons.$save(selected);
+                        votedValue = 'dislike';
+                    }
+
                     selected.voted = voted;
                     selected.votedValue = votedValue;
-
-
                 }
 
-                function incrementDislikes(selected) {
-                    selected.dislike++;
-                    self.lessons.$save(selected);
-
-                    var voted = true;
-                    var votedValue = 'dislike';
-                    selected.voted = voted;
-                    selected.votedValue = votedValue;
-
-                }
-
-                
                 function makeContact(selectedLesson) {
 
                     $mdBottomSheet.show({

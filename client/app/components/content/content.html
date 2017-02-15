@@ -16,10 +16,10 @@
 <p class="vote-text">You chose to {{selected.votedValue}} {{selected.name}}. Thank you for voting!</p>
 </div>
 <div ng-if="!selected.voted">
-  <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="false" ng-click="lc.incrementLikes(selected)">
+  <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="false" ng-click="lc.incrementVotes(selected, selected.like)">
     <md-icon md-svg-icon="thumbsup"></md-icon> Like {{selected.like}}
 </md-button>
-<md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="false" ng-click="lc.incrementDislikes(selected)">
+<md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="false" ng-click="lc.incrementVotes(selected, selected.dislike)">
     <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
 </md-button>
 </div>
