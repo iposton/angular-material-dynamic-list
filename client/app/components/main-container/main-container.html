@@ -1,40 +1,16 @@
 <div class="container" layout="row" flex>
-
     <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
         <md-list ng-click="vm.toggleLessonList()">
             <md-list-item ng-repeat="l in vm.lessons">
-              
-                    <a class="md-button" id="btn" ng-click="vm.selectLesson(l); vm.setActive(l, vm.lessons)" ng-class="{active: l.active}" on-load-clicker index="$index">
-                    <img ng-src="{{l.avatar}}" class="png-icon avatar">
-                    {{l.name}}
-                    </a>
-              
-             
+                <a class="md-button" id="btn" ng-click="vm.selectLesson(l); vm.setActive(l, vm.lessons)" ng-class="{active: l.active}" on-load-clicker index="$index">
+                    <img ng-src="{{l.avatar}}" class="png-icon avatar"> {{l.name}}
+                </a>
             </md-list-item>
-            <md-list-item ng-if="currentuser">
-              
-                    <a class="md-button" id="btn" ng-click="vm.showNew($event)" ng-class="{active: l.active}">
-                    + Add Lesson
-                    </a>
-              
-             
-            </md-list-item>
+            <add-lesson currentuser="currentuser"></add-lesson>
         </md-list>
     </md-sidenav>
-   
-        <md-content id="content" flex>
+    <md-content id="content" flex>
         <content selected="vm.selected" tweet="vm.tweet"></content>
-
-        <div layout="row" ng-if="currentuser">
-                        <md-button class="md-raised md-button md-ink-ripple" ng-click="vm.showEdit($event)">
-                            Edit
-                        </md-button>
-                        <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="vm.deleteLesson($event, vm.selected)">
-                            Delete
-                        </md-button>
-                    </div>
-        </md-content>
-
-   
+        <edit-lesson selected="vm.selected" currentuser="currentuser"></edit-lesson>
+    </md-content>
 </div>
-

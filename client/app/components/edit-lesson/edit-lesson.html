@@ -1,0 +1,8 @@
+<div layout="row" ng-if="currentuser">
+    <md-button class="md-raised md-button md-ink-ripple" ng-click="vm.showEdit($event, selected)">
+        Edit
+    </md-button>
+    <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="vm.deleteLesson($event, selected)">
+        Delete
+    </md-button>
+</div>

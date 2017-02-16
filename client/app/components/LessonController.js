@@ -8,55 +8,25 @@
         $sceProvider.enabled(false);
     })
 
-    .controller('LessonController', ['lessonService', '$mdBottomSheet', '$mdSidenav', '$scope', '$mdDialog', '$window', LessonController]);
+    .controller('LessonController', ['lessonService', '$mdDialog', LessonController]);
 
-    function LessonController(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog, $window) {
+    function LessonController(lessonService, $mdDialog) {
 
         var self = this;
 
-        self.selected = null;
-        self.lessons = [];
+        // PULL IN DATA FROM FIREBASE
+        self.lessons = lessonService.ref;
 
-        // Define Functions
-        self.toggleLessonList = toggleLessonList;
+        self.selected = null;
+        // Define Functions 
         self.getCurrentUser = getCurrentUser;
         self.showLogin = showLogin;
         self.login = login;
         self.signout = signout;
         self.resetForm = resetForm;
 
-
-        // GET DATA FROM FIREBASE
-        self.lessons = lessonService.ref;
-
-        // VALUES FOR THE POPOVER ON NAV
-        self.classes = 'drop-theme-arrows-bounce-dark';
-        self.constrainToScrollParent = 'true';
-        self.constrainToWindow = 'true';
-        self.openOn = 'hover';
-        self.position = 'bottom center';
-
-        self.myWebsite = 'http://www.ianposton.com/';
-        self.myRepo = 'https://github.com/iposton/angular-material-dynamic-list';
-
         // Global for $mdDialog 
         var parentEl = angular.element(document.body);
-
-
-        /**
-         * Select the current lessons
-         * @param menuId
-         */
-
-        function toggleLessonList($event) {
-            $mdSidenav('left').toggle();
-            $mdBottomSheet.hide($event);
-        }
-
-        /**
-         * Log in function
-         * @param menuId
-         */
 
         // Login/Signout globals 
         self.newUser = { email: '', password: '' };

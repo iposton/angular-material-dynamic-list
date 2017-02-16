@@ -12,7 +12,7 @@
 
                 },
                 controller: contentCtrl,
-                controllerAs: "lc"
+                controllerAs: "vm"
             }
 
             function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog) {
@@ -50,7 +50,7 @@
                     $mdBottomSheet.show({
                         controllerAs: "vm",
                         controller: ['$mdBottomSheet', ContactSheetController],
-                        templateUrl: 'components/contactSheet.html',
+                        templateUrl: 'components/content/contactsheet.html',
                         parent: angular.element(document.getElementById('content'))
                     });
 
