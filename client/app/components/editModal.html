@@ -39,8 +39,8 @@
         </md-input-container>
         <section layout="row">
             
-            <md-button class="md-raised md-button md-ink-ripple" ng-click="saveEdit(vm.selected)">Save Edit</md-button>
-            <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="clearForm()">Cancel</md-button>
+            <md-button class="md-raised md-button md-ink-ripple" ng-click="vm.saveEdit(vm.selected)">Save Edit</md-button>
+            <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="vm.clearForm()">Cancel</md-button>
         </section>
         <!-- <pre>{{ lessons | json }}</pre> -->
     </form>
