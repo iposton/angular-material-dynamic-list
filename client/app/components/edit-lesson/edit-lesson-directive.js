@@ -32,8 +32,6 @@
                 // For $mdDialog
                 var parentEl = angular.element(document.body);
 
-            
-
                 function showEdit($event, selected) {
 
                     $mdDialog.show({
@@ -50,12 +48,14 @@
                             self.saveEdit = saveEdit;
                             self.clearForm = clearForm;
 
-                            function saveEdit(l) {
-                                // don't save these values only for view condition
+                            function saveEdit(update) {
+
+                                // don't save these values only for ng-disabled to disable like/dislike buttons
                                 // TODO: Find a better way to do this
-                                l.voted = null;
-                                l.votedValue = null;
-                                self.id = l.$id
+                                update.voted = null;
+                                update.message = null;
+
+                                self.id = update.$id
                                 self.editedLesson = self.lessons.$getRecord(self.id);
                                 self.lessons.$save(self.editedLesson);
                                 self.selected = {};

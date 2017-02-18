@@ -6,30 +6,15 @@
 <md-button class="share" md-no-ink aria-label="Share with {{selected.name}}" ng-click="vm.makeContact(selected)">
     <md-icon md-svg-icon="share"></md-icon>
 </md-button>
-<div ng-if="selected.voted">
-  <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="true" ng-click="vm.incrementLikes(selected)">
-    <md-icon md-svg-icon="thumbsup"></md-icon> Like {{selected.like}}
-</md-button>
-<md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="true" ng-click="vm.incrementDislikes(selected)">
-    <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
-</md-button>
-<p class="vote-text">You chose to {{selected.votedValue}} {{selected.name}}. Thank you for voting!</p>
+<div>
+    <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="selected.voted" ng-click="vm.incrementVotes(selected, selected.like)">
+        <md-icon md-svg-icon="thumbsup"></md-icon> Like {{selected.like}}
+    </md-button>
+    <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="selected.voted" ng-click="vm.incrementVotes(selected, selected.dislike)">
+        <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
+    </md-button>
+    <p class="vote-text">{{selected.message}} </p>
 </div>
-<div ng-if="!selected.voted">
-  <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="false" ng-click="vm.incrementVotes(selected, selected.like)">
-    <md-icon md-svg-icon="thumbsup"></md-icon> Like {{selected.like}}
-</md-button>
-<md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="false" ng-click="vm.incrementVotes(selected, selected.dislike)">
-    <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
-</md-button>
-</div>
-
 <div>
     <a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" style="float: right"></a>
-    
 </div>
-
-
- 
-
- 

@@ -23,26 +23,25 @@
                 self.incrementVotes = incrementVotes;
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
-
-                // GLOBAL VARS FOR INCEMENT FUNCTION
-                var voted = true;
-                var votedValue = null;
-
+                
                 function incrementVotes(selected, vote) {
+                    var votedValue = null;
 
                     if (vote === selected.like) {
                         selected.like += 1;
                         self.lessons.$save(selected);
                         votedValue = 'like';
+                         
 
                     } else {
                         selected.dislike += 1;
                         self.lessons.$save(selected);
                         votedValue = 'dislike';
+                        
                     }
 
-                    selected.voted = voted;
-                    selected.votedValue = votedValue;
+                    selected.voted = self.voted = true;
+                    selected.message = 'You chose to ' + votedValue + ' ' + selected.name + '. Thank you for voting!';
                 }
 
                 function makeContact(selectedLesson) {
