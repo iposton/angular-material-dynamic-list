@@ -239,10 +239,10 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 ``` 
 ### New Features February 2017
 ####Create Firebase User for authentication 
-*Create a firebase user by going to your firebase console and in the sidenav under Develop click on the <code>Authentication</code> option. 
-*In Authentication go to the SIGN-IN METHOD tab and enable Email/Password. 
-*Then click on USERS tab and click ADD USER button. Enter an email and password.
-*You can authenticate the user on the client side with this html and login function. 
+* Create a firebase user by going to your firebase console and in the sidenav under Develop click on the <code>Authentication</code> option. 
+* In Authentication go to the SIGN-IN METHOD tab and enable Email/Password. 
+* Then click on USERS tab and click ADD USER button. Enter an email and password.
+* You can authenticate the user on the client side with this html and login function. 
 
 ```html
 
@@ -311,7 +311,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 
 ####Create, Udate, and Delete features using angular-material $mdDialog.
-*Create new data then save to your firebase db with this html and add new data function. 
+* Create new data then save to your firebase db with this html and add new data function. 
 
 ```html
 
@@ -353,7 +353,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ```
 
-*Use $mdDialog to add data with this html and function. 
+* Use $mdDialog to add data with this html and function. 
 
 ```html
 
@@ -381,7 +381,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ```
 
-*Edit data then save to your firebase db with this html and add new data function.
+* Edit data then save to your firebase db with this html and add new data function.
 
 ```html
 
@@ -424,7 +424,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ```
 
-*The trick to editing data is I stored a data object from the ng-repeat and called it selected. Then I was able to see the data in the form and change the data then call the saveEdit function. 
+* The trick to editing data is I stored a data object from the ng-repeat and called it selected. Then I was able to see the data in the form and change the data then call the saveEdit function. 
 
 ```html
 
@@ -451,7 +451,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ```
 
-*To pull this off in an $mdDialog modal was tricky. I was able to pass selected into the modal like this.
+* To pull this off in an $mdDialog modal was tricky. I was able to pass selected into the modal like this.
 
 ```html
 
@@ -510,9 +510,9 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ``` 
 
-*I made a controller for this modal and passed the selected data so it could be used in the modal and saved to the firebase.ref from the modal. Also notice I am passing in <code>$id</code> of the editedData object before saving. That $id is the funny id firebase assigns to each data object it will look somelike this <code>-KXx-NpXOL9pppppxxLxxx</code> This is so I update the existing data with that specific id in my firebase ref. 
+* I made a controller for this modal and passed the selected data so it could be used in the modal and saved to the firebase.ref from the modal. Also notice I am passing in <code>$id</code> of the editedData object before saving. That $id is the funny id firebase assigns to each data object it will look somelike this <code>-KXx-NpXOL9pppppxxLxxx</code> This is so I update the existing data with that specific id in my firebase ref. 
 
-*Delete data with this html and function. 
+* Delete data with this html and function. 
 
 ```html
     
@@ -541,11 +541,10 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 ```
 
-*I am passing in the selected data again and then calling <code>$remove</code> from the firebase ref.
+* I am passing in the selected data again and then calling <code>$remove</code> from the firebase ref.
 
 ####Prevent like dislike clicks per session
-
-*This feature is to prevent a user from clicking multiple times per session. I created 2 attributes to be added to the data object that would then allow me to disable the buttons after one of the buttons had been selected and give a friendly message. It will disable the buttons until the page is refreshed. So It won't stop a user from voting again but it will require doing extra work to keep users from abusing the voting option. I can't block a user to one vote unless I have an auth token for that user and this app is not set up to auth users so this is a little trick I used to prevent too many clicks at once. It works well for this fun app. 
+* This feature is to prevent a user from clicking multiple times per session. I created 2 attributes to be added to the data object that would then allow me to disable the buttons after one of the buttons had been selected and give a friendly message. It will disable the buttons until the page is refreshed. So It won't stop a user from voting again but it will require doing extra work to keep users from abusing the voting option. I can't block a user to one vote unless I have an auth token for that user and this app is not set up to auth users so this is a little trick I used to prevent too many clicks at once. It works well for this fun app. 
 
 ```html
     
@@ -587,11 +586,11 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 ```
 
-*When I add <code>selected.voted = self.voted = true;</code> I can use the built in angular directive <code>ng-disabled</code> on the button to disable the button after the click. It will only disable the buttons of the selected object. I also add a nice message to the selected object to avoid the message showing on all the data generated from the ng-repeat of the firebase ref array.  
+* When I add <code>selected.voted = self.voted = true;</code> I can use the built in angular directive <code>ng-disabled</code> on the button to disable the button after the click. It will only disable the buttons of the selected object. I also add a nice message to the selected object to avoid the message showing on all the data generated from the ng-repeat of the firebase ref array.  
 
 ####Customize the twitter button to pull in selected data.
 
-*I created a twitter directive that would use Angular's $watch expression to see if the share button text had changed depending on which item in my data is selected. It the tweet changes the directive has to remove the old share button and create a new one. 
+* I created a twitter directive that would use Angular's $watch expression to see if the share button text had changed depending on which item in my data is selected. It the tweet changes the directive has to remove the old share button and create a new one. 
 
 ```html
     
