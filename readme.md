@@ -310,7 +310,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 
 
-####Create, Udate, and Delete features using angular-material $mdDialog.
+####Create, Update, and Delete data using angular-material $mdDialog.
 * Create new data then save to your firebase db with this html and add new data function. 
 
 ```html
