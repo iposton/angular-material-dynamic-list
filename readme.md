@@ -510,7 +510,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ``` 
 
-* I made a controller for this modal and passed the selected data so it could be used in the modal and saved to the firebase.ref from the modal. Also notice I am passing in <code>$id</code> of the editedData object before saving. That $id is the funny id firebase assigns to each data object it will look somelike this <code>-KXx-NpXOL9pppppxxLxxx</code> This is so I update the existing data with that specific id in my firebase ref. 
+* I made a controller for this modal and passed the selected data so it could be used in the modal and saved to the firebase.ref from the modal. Also notice I am passing in <code>$id</code> of the editedData object before saving. That $id is the funny id firebase assigns to each data object it will look something like this <code>-KXx-NpXOL9pppppxxLxxx</code> This is so I update the existing data with that specific id in my firebase ref. 
 
 * Delete data with this html and function. 
 
