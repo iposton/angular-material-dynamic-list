@@ -658,6 +658,8 @@ Note: Keep checking back in as I will add some more features to this app.
 ###References
 The angular-material course on egghead. [https://egghead.io/lessons/angularjs-angular-material-installing-with-npm](https://egghead.io/lessons/angularjs-angular-material-installing-with-npm)
 Ultimate AngularJS: Build a Real-World App from Scratch. [https://www.udemy.com/ultimate-angularjs-course/](https://www.udemy.com/ultimate-angularjs-course/)
+Authenticate with Firebase using Password-Based Accounts [https://firebase.google.com/docs/auth/web/password-auth](https://firebase.google.com/docs/auth/web/password-auth)
+
 
 
 ####[My Lessons](https://my-lessons.herokuapp.com/)
