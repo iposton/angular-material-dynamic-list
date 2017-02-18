@@ -281,9 +281,9 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ```
 
-* The key here is <code>firebase.auth().signInWithEmailAndPassword(email, password)</code> This specifically talks to firebase. Now there is a currentUser object that can be used to show/hide add/edit/delte data features in the client.
+* The key here is <code>firebase.auth().signInWithEmailAndPassword(email, password)</code> This specifically talks to firebase. Now there is a currentUser object that can be used to show/hide add/edit/delete data features in the client.
 
-* To get the firebase keyword to work some code needed to be updated to the way initialize firebase in my app. In your firebase console under Authentication there is a WEB SETUP button where to find the special keys to your firebase db. It should look like this. 
+* To get the firebase keyword to work some code needed to be updated to initialize firebase in my app. In your firebase console under Authentication there is a WEB SETUP button where to find the special keys to your firebase db. It should look like this. 
 
 ```js
 
@@ -472,7 +472,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
                         locals: {
                             data: selected
                         },
-                        controller: ['$scope', 'lesson', 'dataService', function($scope, data, lessonService) {
+                        controller: ['$scope', 'lesson', 'dataService', function($scope, data, dataService) {
                             var self = this;
 
                             //Now selected is ready for the modal view to edit it
@@ -482,7 +482,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
                             self.id = null;
 
                             //GET DATA FROM FIREBASE
-                            self.data = lessonService.ref;
+                            self.data = dataService.ref;
 
                             // DEFINE MODAL CONTROLLER FUNCTIONS
                             self.saveEdit = saveEdit;
@@ -516,7 +516,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 ```html
     
-    <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="vm.deleteLesson($event, selected)">
+    <md-button class="md-raised md-button md-ink-ripple md-warn" ng-click="vm.deleteData($event, selected)">
         Delete
     </md-button>
 
@@ -524,7 +524,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 ```js
 
-            function deleteLesson(event, data) {
+            function deleteData(event, data) {
                     var confirm = $mdDialog.confirm()
                         .title("Are you sure you want to delete " + data.someItem + "?")
                         .ok("Yes")
@@ -590,7 +590,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 ####Customize the twitter button to pull in selected data.
 
-* I created a twitter directive that would use Angular's $watch expression to see if the share button text had changed depending on which item in my data is selected. It the tweet changes the directive has to remove the old share button and create a new one. 
+* I created a twitter directive that would use Angular's $watch expression to see if the share button text had changed depending on which item in my data is selected. If the tweet changes the directive has to remove the old share button and create a new one. 
 
 ```html
     
