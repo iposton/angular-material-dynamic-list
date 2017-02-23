@@ -7,7 +7,9 @@
              .icon("twitter", "../assets/svg/twitter-box.svg", 24)
              .icon("facebook", "../assets/svg/facebook-box.svg", 24)
              .icon("thumbsup", "../assets/svg/thumb-up.svg", 24)
-             .icon("thumbsdown", "../assets/svg/thumb-down.svg", 24);
+             .icon("thumbsdown", "../assets/svg/thumb-down.svg", 24)
+             .icon("close", "../assets/svg/close.svg", 24)
+             .icon("comment", "../assets/svg/comment-text.svg", 24);
 
          $mdThemingProvider.theme('default')
              .primaryPalette('brown')

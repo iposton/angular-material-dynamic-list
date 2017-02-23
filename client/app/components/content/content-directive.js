@@ -15,14 +15,20 @@
                 controllerAs: "vm"
             }
 
-            function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog) {
+            function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog, $mdToast) {
 
                 var self = this;
+
+                self.message = null;
+
                 // DEFINE FUNCTIONS
                 self.makeContact = makeContact;
                 self.incrementVotes = incrementVotes;
+                
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
+                
+                var parentEl = angular.element(document.body);
                 
                 function incrementVotes(selected, vote) {
                     var votedValue = null;
@@ -42,9 +48,24 @@
 
                     selected.voted = self.voted = true;
                     selected.message = 'You chose to ' + votedValue + ' ' + selected.name + '. Thank you for voting!';
+
+                    $mdToast.show(
+                      $mdToast.simple()
+                        .textContent(selected.message)
+                        .action('OK')
+                        .highlightAction(true)
+                        .hideDelay(0)
+                        .position('bottom right')
+                        .parent(parentEl)
+                    );
+                    
                 }
 
+                
+
                 function makeContact(selectedLesson) {
+
+                    console.log('whats up with this??');
 
                     $mdBottomSheet.show({
                         controllerAs: "vm",

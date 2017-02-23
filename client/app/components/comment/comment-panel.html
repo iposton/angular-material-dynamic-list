@@ -1,0 +1,18 @@
+<md-toolbar layout="row">
+    <h2 class="md-toolbar-tools">Send a comment</h2><span flex></span>
+    <div class="close-icon">
+        <md-icon md-svg-icon="close" ng-click="vm.closeDialog()"></md-icon>
+    </div>
+</md-toolbar>
+<md-content layout-padding>
+    <form>
+        <div layout="row" layout-sm="column" layout-align="space-around" ng-if="vm.isLoading">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <md-input-container class="md-block" ng-if="!vm.isLoading">
+            <label for=""></label>
+            <textarea type="text" id="content" ng-model="vm.mail.comment">Comment</textarea>
+        </md-input-container>
+        <md-button class="md-raised md-button md-ink-ripple" ng-click="vm.sendComment(vm.mail)">Send</md-button>
+    </form>
+</md-content>

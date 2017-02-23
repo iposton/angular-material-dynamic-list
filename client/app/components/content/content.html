@@ -1,11 +1,14 @@
-<img ng-src="{{selected.avatar}}" class="avatar">
+
+  <img ng-src="{{selected.avatar}}" class="avatar">
 <a ng-href="{{selected.websiteUrl}}" target="_blank" title="go to {{selected.websiteUrl}}"><h2>{{selected.name}}</h2></a>
 <p>
     {{selected.content}}
 </p>
-<md-button class="share" md-no-ink aria-label="Share with {{selected.name}}" ng-click="vm.makeContact(selected)">
+<md-button class="share" md-no-ink aria-label="Share with {{selected.name}}" ng-click="vm.makeContact(selected)" >
     <md-icon md-svg-icon="share"></md-icon>
 </md-button>
+
+
 <div>
     <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="selected.voted" ng-click="vm.incrementVotes(selected, selected.like)">
         <md-icon md-svg-icon="thumbsup"></md-icon> Like {{selected.like}}
@@ -13,8 +16,11 @@
     <md-button md-no-ink aria-label="Share with {{selected.name}}" ng-disabled="selected.voted" ng-click="vm.incrementVotes(selected, selected.dislike)">
         <md-icon md-svg-icon="thumbsdown"></md-icon> Dislike {{selected.dislike}}
     </md-button>
-    <p class="vote-text">{{selected.message}} </p>
+    <!-- <p class="vote-text">{{selected.message}} </p> -->
 </div>
 <div>
-    <a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" style="float: right"></a>
+    <a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" class="tweet"></a>
+
+    <comment></comment>
+    
 </div>

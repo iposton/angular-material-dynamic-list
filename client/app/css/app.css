@@ -110,6 +110,20 @@ md-sidenav md-list {
     color: #27ae60;
 }
 
+/* COMMENT */
+
+.comment {
+    position: absolute; 
+    bottom: 0; 
+    right: 10px;
+}
+
+/* TWEET */
+
+.tweet {
+    float: right;
+}
+
 
 /* Utils */
 
@@ -281,3 +295,16 @@ button {
     font-family: 'Roboto';
 }
 
+
+/* COMMENT CSS */
+
+.close-icon {
+    margin: 0 5px 0 0; 
+    cursor:pointer; 
+    
+}
+
+*:focus {
+    
+    outline: none;
+}
