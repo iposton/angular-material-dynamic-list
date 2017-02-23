@@ -16,7 +16,8 @@ Why this app may be worth following along. It's a nice way to share a list of co
 This app is for beginners to make an app and host it for free so that the app is able to be shared with the world. It's fun! 
 
 ### Software used for this application
-* angular.js (version 1.5.8)   
+* Angular.js (version 1.5.8) 
+* Node.js (version 6.0.0)     
 * Firebase [Set up a free account ](https://firebase.google.com/) 
 * [angular-material](version master)
 * [drop-ng](https://github.com/stevenh77/drop-ng)
