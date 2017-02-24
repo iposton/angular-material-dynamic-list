@@ -21,7 +21,6 @@ app.get('/', function(req, res) {
 });
 
 // for heroku config vars
-
 app.get('/firebaseurl.js', function(req, res){
        
        res.write("var FIREBASE_URL='"+process.env.FIREBASE_URL+"'" + '\n');

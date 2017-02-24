@@ -1,6 +1,6 @@
 (function(){
   'use strict';
 
-  angular.module('lessons', ['ngMaterial', 'firebase', 'drop-ng']);
+  angular.module('lessons', ['ngMaterial', 'firebase', 'drop-ng', 'ngMessages']);
   
 }());
