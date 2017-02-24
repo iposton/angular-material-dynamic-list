@@ -308,3 +308,10 @@ button {
     
     outline: none;
 }
+
+.wrapper {
+  max-height: 200px;
+  overflow: auto;
+}
+
+
