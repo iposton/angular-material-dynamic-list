@@ -24,12 +24,15 @@
                 // DEFINE FUNCTIONS
                 self.makeContact = makeContact;
                 self.incrementVotes = incrementVotes;
-                
+                self.showToast = showToast;
+
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
-                
-                var parentEl = angular.element(document.body);
-                
+
+                $scope.$on('commentSent', function(event, message) {
+                    showToast(message);
+                });
+
                 function incrementVotes(selected, vote) {
                     var votedValue = null;
 
@@ -37,31 +40,36 @@
                         selected.like += 1;
                         self.lessons.$save(selected);
                         votedValue = 'like';
-                         
+
 
                     } else {
                         selected.dislike += 1;
                         self.lessons.$save(selected);
                         votedValue = 'dislike';
-                        
+
                     }
 
                     selected.voted = self.voted = true;
                     selected.message = 'You chose to ' + votedValue + ' ' + selected.name + '. Thank you for voting!';
+                    var message = selected.message;
+                    showToast(message);
 
+
+                }
+
+                function showToast(message) {
                     $mdToast.show(
-                      $mdToast.simple()
-                        .textContent(selected.message)
+                        $mdToast.simple()
+                        .textContent(message)
                         .action('OK')
                         .highlightAction(true)
                         .hideDelay(0)
                         .position('bottom right')
-                        .parent(parentEl)
+                        .parent(angular.element(document.body))
                     );
-                    
                 }
 
-                
+
 
                 function makeContact(selectedLesson) {
 

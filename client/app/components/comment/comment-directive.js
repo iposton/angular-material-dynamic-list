@@ -16,9 +16,6 @@
 
                 self.showPanel = showPanel;
 
-                var parentEl = angular.element(document.body);
-
-
                 function showPanel($event) {
                     
                     var position = $mdPanel.newPanelPosition()
@@ -66,7 +63,7 @@
                     self.closeDialog = closeDialog;
 
                     function sendComment(mail) {
-
+                        // $scope.$emit('commentSent', 'trying to send');
                         self.mail = mail;
                         self.isLoading = true;
                         // SENDING COMMENT TO THE SERVER
@@ -79,16 +76,9 @@
                             self.isLoading = false;
                             self.serverMessage = 'Your comment was sent successfully.';
                             self.mdPanel.close();
+                            
+                            $scope.$emit('commentSent', self.serverMessage);
 
-                            $mdToast.show(
-                                $mdToast.simple()
-                                .textContent(self.serverMessage)
-                                .action('OK')
-                                .highlightAction(true)
-                                .hideDelay(0)
-                                .position('bottom right')
-                                .parent(parentEl)
-                            );
                         });
 
 
