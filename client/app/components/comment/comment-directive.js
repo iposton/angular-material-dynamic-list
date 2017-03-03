@@ -54,7 +54,6 @@
                 function PanelDialogCtrl(mdPanelRef) {
                     var self = this;
 
-
                     self.sendComment = sendComment;
                     self.mail = null;
                     self.serverMessage = null;
@@ -63,9 +62,10 @@
                     self.closeDialog = closeDialog;
 
                     function sendComment(mail) {
-                        // $scope.$emit('commentSent', 'trying to send');
+                        
                         self.mail = mail;
                         self.isLoading = true;
+
                         // SENDING COMMENT TO THE SERVER
                         $http.post('/sendmail', {
                             from: 'Ian <ianposton@sbcglobal.net>',
@@ -80,7 +80,6 @@
                             $scope.$emit('commentSent', self.serverMessage);
 
                         });
-
 
                     }
 

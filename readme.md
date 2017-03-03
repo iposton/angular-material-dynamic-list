@@ -1,4 +1,4 @@
-# My Lessons - <a href="https://my-lessons.herokuapp.com/">Demo</a> <a href="https://codeclimate.com/github/iposton/angular-material-dynamic-list"><img src="https://codeclimate.com/github/iposton/angular-material-dynamic-list/badges/gpa.svg" /></a>
+# Angular 1.x, Angular-Material, Firebase and Heroku - <a href="https://my-lessons.herokuapp.com/">Demo</a> <a href="https://codeclimate.com/github/iposton/angular-material-dynamic-list"><img src="https://codeclimate.com/github/iposton/angular-material-dynamic-list/badges/gpa.svg" /></a>
 This is a single page app which is a dynamic list showing my favorite websites that offer coding lessons.  
 
 ### Description
@@ -8,8 +8,9 @@ Why this app may be worth following along. It's a nice way to share a list of co
 
 ### You can learn this
 * Create angular directives for a clean modular app structure.
-* How to create Firebase User for authentication to protect writing data to the db.   
-* Create, Udate, and Delete data using angulat-material $mdDialog (SPA approach). 
+* Allow comments to be sent from the app to a specific email inbox.
+* [How to create Firebase User for authentication to protect writing data to the db.](http://www.ianposton.com/create-firebase-user-for-authentication/)   
+* [Create, Udate, and Delete data using angular-material $mdDialog (SPA approach).](http://www.ianposton.com/firebase-angular-material/) 
 * Allow 1 like or dislike per session.
 * Customize the twitter share button to pull in selected data.   
 
@@ -653,6 +654,128 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 
 ```
+#### Comment form connect to personal email inbox
+##### It is easy to set up email functionality from an app. By installing a couple of NPM modules such as nodemailer you can have comments sent to your inbox with a few lines of code. Nodemailer and sendgrid do all the heavy lifting here making setting up complicated server calls to send emails a piece of cake. 
+
+* Inside the app run command <code>npm install nodemailer body-parser nodemailer-sendgrid-transport --save</code>. This will install the packages needed to send comments to email and the packages will save to the <code>package.json</code>.
+* Require the modules in the server.js file. Set up body-parser and nodemailer transport function.
+
+```js
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+var app = express();
+
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8082;
+
+// make express look in the public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/client/app'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// set the home page route
+app.get('/', function(req, res) {
+
+    // make sure index is in the right directory. In this case /app/index.html
+    res.render('index');
+});
+
+// Send comment route
+app.post('/sendmail', function(req, res){
+    var options = {
+        auth: {
+
+            sendgrid_api_key: 'SG.fakekey123412341234xp1234123xp12341234xxxx1234fakekey'
+            
+        }
+    }
+    
+    var mailer = nodemailer.createTransport(sgTransport(options));
+    mailer.sendMail(req.body, function(error, info){
+        
+        if(error){
+            res.status('401').json({err: info});
+        }else{
+            res.status('200').json({success: true});
+        }
+    });
+});
+
+
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
+
+
+```
+
+* Get an api key from a free personal [sendgrid](https://sendgrid.com/solutions/sendgrid-api/) account. To get the key aproval is needed from sendgrid. Setting up sendgrid as heroku plugin and then getting the sendgrid key from the sendgrid dashboard of the heroku app is the way to get around approval. Reference: [Heroku sendgrid ad-on](https://elements.heroku.com/addons/sendgrid). It should be a one click install to a specified heroku app then access the sendgrid dashboard and access the api key there. 
+
+* Make a call to the server.js function from the client with this html and function from a angular controller. Use $http angular service as a controller dependency to call to server.js with comment data and send the comment text to a specific email inbox. 
+
+```html
+
+<md-content layout-padding>
+    <form name="commentForm">
+        <!-- Prevent comment textarea from overflow with wrapper -->
+        <div class="wrapper">
+            <div layout="row" layout-sm="column" layout-align="space-around" ng-if="vm.isLoading">
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+            <md-input-container class="md-block" ng-if="!vm.isLoading">
+                <label for="">Comment</label>
+                <textarea type="text" ng-model="vm.mail.comment" md-maxlength="2000" name="comment" rows="4" required></textarea>
+                <div ng-messages="commentForm.comment.$error" ng-if="commentForm.comment.$dirty">
+                    <div ng-message="required" class="my-messages" role="alert">This field is required.</div>
+                    <div ng-message="md-maxlength" class="my-messages" role="alert">Message must not exceed 2000 characters.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <md-button class="md-raised md-button md-ink-ripple md-send" ng-click="vm.sendComment(vm.mail)" ng-disabled="commentForm.$invalid">Send</md-button>
+    </form>
+</md-content>
+
+```
+
+```js
+
+var self = this;
+
+self.sendComment = sendComment;
+self.mail = null;
+self.serverMessage = null;
+self.isLoading = false;
+
+
+function sendComment(mail) {
+                        
+    self.mail = mail;
+    self.isLoading = true;
+
+    // SENDING COMMENT TO THE SERVER
+    $http.post('/sendmail', {
+        from: 'person <email@inbox.com>',
+        to: 'email@inbox.com',
+        subject: 'Comment from MyApp',
+        text: self.mail.comment
+    }).then(res => {
+        self.isLoading = false;
+        self.serverMessage = 'Your comment was sent successfully.';
+
+    });
+
+}
+
+```
+
+* Install angular-messages to make validations messages work run <code>bower install angular-messages --save</code>. Add ngMessages to the ng-app module <code>angular.module('MyApp', ['ngMessages'])</code>
+
+* Enter an inbox that you have access to and send a comment to test. 
+
 
 Note: Keep checking back in as I will add some more features to this app.
 
