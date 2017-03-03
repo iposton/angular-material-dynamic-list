@@ -713,6 +713,8 @@ app.listen(port, function() {
 
 ```
 
+##### <span style="color:red">Warning:</span> Don't push sendgrid api key to public github repo. Use the api key for local development and testing only.
+
 * Get an api key from a free personal [sendgrid](https://sendgrid.com/solutions/sendgrid-api/) account. To get the key aproval is needed from sendgrid. Setting up sendgrid as heroku plugin and then getting the sendgrid key from the sendgrid dashboard of the heroku app is the way to get around approval. Reference: [Heroku sendgrid ad-on](https://elements.heroku.com/addons/sendgrid). It should be a one click install to a specified heroku app then access the sendgrid dashboard and access the api key there. 
 
 * Make a call to the server.js function from the client with this html and function from a angular controller. Use $http angular service as a controller dependency to call to server.js with comment data and send the comment text to a specific email inbox. 
