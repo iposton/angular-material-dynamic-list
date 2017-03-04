@@ -715,7 +715,7 @@ app.listen(port, function() {
 
 ```diff
 
-##### - Warning: Don't push sendgrid api key to public github repo. Use the api key for local development and testing only.
+- Warning: Don't push sendgrid api key to public github repo. Use the api key for local development and testing only.
 
 ```
 
@@ -726,7 +726,7 @@ app.listen(port, function() {
 
 ```html
 
-<!-- make function call to the controller to open the panel -->
+<!-- make function call to the controller to open the panel from comment.html -->
 <md-button class="md-fab comment" aria-label="Comment" ng-click="comCtrl.showPanel($event)">
         <md-icon md-svg-icon="comment"></md-icon>
 </md-button>
