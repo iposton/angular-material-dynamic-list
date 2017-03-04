@@ -8,7 +8,7 @@ Why this app may be worth following along. It's a nice way to share a list of co
 
 ### You can learn this
 * Create angular directives for a clean modular app structure.
-* Allow comments to be sent from the app to a specific email inbox.
+* Allow comments to be sent from the app to a specific email inbox using [$mdPanel](https://material.angularjs.org/1.1.1/api/service/$mdPanel).
 * [How to create Firebase User for authentication to protect writing data to the db.](http://www.ianposton.com/create-firebase-user-for-authentication/)   
 * [Create, Udate, and Delete data using angular-material $mdDialog (SPA approach).](http://www.ianposton.com/firebase-angular-material/) 
 * Allow 1 like or dislike per session.
@@ -654,11 +654,11 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 
 ```
-#### Comment form connect to personal email inbox
+#### Connect comment form to personal email inbox using $mdPanel
 ##### It is easy to set up email functionality from an app. By installing a couple of NPM modules such as nodemailer you can have comments sent to your inbox with a few lines of code. Nodemailer and sendgrid do all the heavy lifting here making setting up complicated server calls to send emails a piece of cake. 
 
 * Inside the app run command <code>npm install nodemailer body-parser nodemailer-sendgrid-transport --save</code>. This will install the packages needed to send comments to email and the packages will save to the <code>package.json</code>.
-* Require the modules in the server.js file. Set up body-parser and nodemailer transport function.
+* Require the modules in the server.js file. Set up body-parser and nodemailer transport function. The <code>nodemailer</code> module will require node.js version 6.0.0 or higher. To upgrade your node.js version on your machine you can use this node version manager [https://github.com/tj/n](https://github.com/tj/n).
 
 ```js
 
@@ -713,14 +713,35 @@ app.listen(port, function() {
 
 ```
 
-##### <span style="color:red">Warning:</span> Don't push sendgrid api key to public github repo. Use the api key for local development and testing only.
+```diff
 
-* Get an api key from a free personal [sendgrid](https://sendgrid.com/solutions/sendgrid-api/) account. To get the key aproval is needed from sendgrid. Setting up sendgrid as heroku plugin and then getting the sendgrid key from the sendgrid dashboard of the heroku app is the way to get around approval. Reference: [Heroku sendgrid ad-on](https://elements.heroku.com/addons/sendgrid). It should be a one click install to a specified heroku app then access the sendgrid dashboard and access the api key there. 
+##### - Warning: Don't push sendgrid api key to public github repo. Use the api key for local development and testing only.
 
-* Make a call to the server.js function from the client with this html and function from a angular controller. Use $http angular service as a controller dependency to call to server.js with comment data and send the comment text to a specific email inbox. 
+```
+
+
+* Get an api key from a free personal [sendgrid](https://sendgrid.com/solutions/sendgrid-api/) account. To get the key aproval is needed from sendgrid. Setting up sendgrid as heroku plugin and then getting the sendgrid key from the sendgrid dashboard of the heroku app is the way to get around approval. Reference: [Heroku sendgrid add-on](https://elements.heroku.com/addons/sendgrid). It should be a one click install to a specified heroku app then access the sendgrid dashboard and access the api key there. 
+
+* Make a call to the server.js function from the client with this html and function from a angular controller. Use $http angular service as a controller dependency to call to server.js with comment data and send the comment text to a specific email inbox. Use this html in an Angular Material service called [$mdPanel](https://material.angularjs.org/1.1.1/api/service/$mdPanel). 
 
 ```html
 
+<!-- make function call to the controller to open the panel -->
+<md-button class="md-fab comment" aria-label="Comment" ng-click="comCtrl.showPanel($event)">
+        <md-icon md-svg-icon="comment"></md-icon>
+</md-button>
+
+```
+
+```html
+
+<!-- comment-panel.html -->
+<md-toolbar layout="row">
+    <h2 class="md-toolbar-tools">Send a comment</h2><span flex></span>
+    <div class="close-icon">
+        <md-icon md-svg-icon="close" ng-click="vm.closeDialog()"></md-icon>
+    </div>
+</md-toolbar>
 <md-content layout-padding>
     <form name="commentForm">
         <!-- Prevent comment textarea from overflow with wrapper -->
@@ -745,12 +766,54 @@ app.listen(port, function() {
 
 ```js
 
+       //comment-directive.js
+
+        var self = this;
+
+        self.showPanel = showPanel;
+
+        function showPanel($event) {
+            
+            var position = $mdPanel.newPanelPosition()
+                .absolute()
+                .left('50%')
+                .top('50%');
+
+
+            var config = {
+                attachTo: angular.element(document.body),
+                controller: PanelDialogCtrl,
+                controllerAs: 'vm',
+                disableParentScroll: this.disableParentScroll,
+                templateUrl: 'components/comment/comment-panel.html',
+                hasBackdrop: true,
+                panelClass: 'comment',
+                position: position,
+                trapFocus: true,
+                zIndex: 150,
+                clickOutsideToClose: true,
+                escapeToClose: true,
+                focusOnOpen: true
+            };
+
+            $mdPanel.open(config);
+        };
+
+
+```
+
+```js
+
+
+function PanelDialogCtrl(mdPanelRef) {
 var self = this;
 
 self.sendComment = sendComment;
 self.mail = null;
 self.serverMessage = null;
 self.isLoading = false;
+self.mdPanel = mdPanelRef;
+self.closeDialog = closeDialog;
 
 
 function sendComment(mail) {
@@ -770,6 +833,11 @@ function sendComment(mail) {
 
     });
 
+}
+
+function closeDialog() {
+      self.mdPanel.close();
+    }
 }
 
 ```
