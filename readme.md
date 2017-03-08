@@ -23,6 +23,8 @@ This app is for beginners to make an app and host it for free so that the app is
 * [angular-material](version master)
 * [drop-ng](https://github.com/stevenh77/drop-ng)
 * Heroku [Set up a free account ](https://www.heroku.com/)
+* Nodemailer (version 3.1.3)
+* Angular-messages
 
 ### Clone and serve this app
 You could simply clone this repo and run <code>npm install</code> and <code>bower install</code> then run <code>npm start</code> to serve the app on localhost, but there would be no data to show unless you setup a firebase endpoint. Add json array with data like this below in someService.js and change the lessons array in controller.js to <code>self.data = someService.data;</code> also comment out the firebase ref until it's setup. See firebase setup below.  
