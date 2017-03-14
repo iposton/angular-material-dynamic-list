@@ -71,7 +71,9 @@
 
                 }
 
-                function ProductHuntCtrl(mdPanelRef) {
+                function ProductHuntCtrl(mdPanelRef, $http) {
+
+                    var self = this;
                     
                       // GET THE DATA FROM PRODUCTHUNT API 
                 $http.get('../producthunt.json')
