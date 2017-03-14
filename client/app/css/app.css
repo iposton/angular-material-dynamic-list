@@ -357,6 +357,9 @@ button {
     border-radius: 50%;
     background-clip: padding-box;
     overflow: hidden;
+    /*position: absolute;
+    top: 0;
+    right: 0;*/
     
 }
 
@@ -388,11 +391,15 @@ button {
       0 5px 24px 4px rgba(0, 0, 0, 0.12);
   width: 356px;
   padding-top: 10px;
+  max-height: 200px;
+  overflow: auto;
 }
 
 .demo-menu-example h4, 
 .demo-menu-example h5 {
   text-align: center;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .demo-menu-item {
@@ -408,4 +415,13 @@ button {
 
 .demo-menu-item a {
     text-decoration: none;
+}
+
+#innerContent {
+    padding-left: 0;
+    padding-right: 40px;
+    padding-top: 5px;
+    border-top: 5px solid #ccc;
+    width: 70%;
+    height: auto;
 }

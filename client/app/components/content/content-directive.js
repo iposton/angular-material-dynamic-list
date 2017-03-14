@@ -27,20 +27,6 @@
                 self.showToast = showToast;
                 self.showMenu = showMenu;
 
-                // GET THE DATA FROM PRODUCTHUNT API 
-                $http.get('../producthunt.json')
-                    .then(function(response) {
-                        self.day = null;
-                        self.products = response.data;
-                        
-                        angular.forEach(self.products, function(day) {
-                            self.day = day[0].day;
-                            
-                        })
-                    })
-                    .catch(function(error) {
-                        console.error("Error with GET request", e);
-                    });
                 
                 // SHOW DATA IN MENU
                 function showMenu(ev) {
@@ -49,22 +35,26 @@
                         .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
                     var config = {
                         attachTo: angular.element(document.body),
-                        controller: contentCtrl,
+                        controller: ProductHuntCtrl,
                         controllerAs: 'vm',
-                        template: '<div class="demo-menu-example" ' +
+                        template:
+                            '<div class="demo-menu-example" ' +
                             '     aria-label="Select your favorite dessert." ' +
                             '     role="listbox">' +
-                            '     <h4>Producthunt\'s\ most voted</h4> ' +
-                            '    <h5>{{vm.day | date:\'fullDate\'}}</h5>' +
+                            '<div layout="row" layout-sm="column" layout-align="space-around" ng-if="!vm.products.posts">' +
+                            ' <md-progress-linear class="md-warn" md-mode="intermediate"></md-progress-linear>' +
+                            '</div>' +
+                            '     <h4 ng-if="vm.products.posts">Producthunt\'s\ most voted</h4> ' +
+                            '    <h5 ng-if="vm.products.posts">{{vm.day | date:\'fullDate\'}}</h5>' +
                             '  <div class="demo-menu-item" ' +
                             '       ng-class="" ' +
                             '       aria-selected="" ' +
                             '       tabindex="-1" ' +
                             '       role="option" ' +
                             '       ng-click=""' +
-                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 200"' +
-                            '       ng-keydown="">' +
-                            '     ' +
+                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 50"' +
+                            '       ng-keydown="" ng-if="vm.products.posts">' +
+                            '     <span ng-if="p.votes_count < 50>No products to show.</span>' +
                             '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}} has {{p.votes_count}} votes</a>  ' +
                             '  </div>' +
                             '</div>',
@@ -79,6 +69,26 @@
                     $mdPanel.open(config);
                     
 
+                }
+
+                function ProductHuntCtrl(mdPanelRef) {
+                    
+                      // GET THE DATA FROM PRODUCTHUNT API 
+                $http.get('../producthunt.json')
+                    .then(function(response) {
+                        
+                        self.day = null;
+                        self.products = response.data;
+                        
+                        angular.forEach(self.products, function(day) {
+                            self.day = day[0].day;
+                            
+                        })
+                    })
+                    .catch(function(error) {
+                        console.error("Error with GET request", error);
+                        
+                    });
                 }
 
                 // GET FIREBASE DATA
