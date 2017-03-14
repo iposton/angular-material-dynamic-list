@@ -22,7 +22,7 @@ var productHunt = new productHuntAPI({
 });
 
 // List all live events and filter by category
-productHunt.posts.index({search: {category: 'tech'}}, function (err, res) {
+var getProductHuntData = productHunt.posts.index({search: {category: 'tech'}}, function (err, res) {
   ph = JSON.parse(res.body);
 });
 
@@ -35,6 +35,7 @@ app.get('/', function(req, res) {
 
 // send producthunt data to client
 app.get('/producthunt', function(req, res) {
+    getProductHuntData();
     res.send(ph);
 });
 
