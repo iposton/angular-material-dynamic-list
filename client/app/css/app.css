@@ -343,8 +343,7 @@ button {
 
 
 .ph-fab {
-    /*background: #d45843;*/
-    background-image:url(../assets/img/ProductHunt-Logo.png);
+    background-image:url(../assets/img/producthunt.png);
     background-size: 80px 80px;
     background-repeat: no-repeat;
     background-position: center;
@@ -358,23 +357,9 @@ button {
     border-radius: 50%;
     background-clip: padding-box;
     overflow: hidden;
-   /* -webkit-transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
-    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
-    -webkit-transition-property: background-color, box-shadow, -webkit-transform;
-    transition-property: background-color, box-shadow, -webkit-transform;
-    transition-property: background-color, box-shadow, transform;
-    transition-property: background-color, box-shadow, transform, -webkit-transform;*/
-    /*position: absolute; 
-    bottom: 200px; 
-    right: 10px;*/
     
 }
 
-/*.ph-size {
-    width: 100%;
-    height: 56px;
-    margin: 0 auto; 
-}*/
 
 .ph-fab:after {
   position: absolute;
@@ -383,12 +368,12 @@ button {
   right: 0;
   width: 100%;
   height: 100%;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/ProductHunt-Logo.png);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/ProductHunt-Logo.png);
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/producthunt.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/producthunt.png);
   transition: opacity 0.3s ease-out;
   z-index: 2;
   opacity: 0;
-  /*float: right;*/
+  
 }
 
 .ph-fab:not([disabled]):hover:after {    

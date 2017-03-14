@@ -26,16 +26,16 @@
                 self.incrementVotes = incrementVotes;
                 self.showToast = showToast;
                 self.showMenu = showMenu;
-                
+
                 // GET THE DATA FROM PRODUCTHUNT API 
                 $http.get('../producthunt.json')
                     .then(function(response) {
                         self.day = null;
                         self.products = response.data;
-                        console.log(response.data);
+                        
                         angular.forEach(self.products, function(day) {
                             self.day = day[0].day;
-                            console.log(self.day);
+                            
                         })
                     })
                     .catch(function(error) {
