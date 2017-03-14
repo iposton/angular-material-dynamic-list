@@ -15,7 +15,7 @@
                 controllerAs: "vm"
             }
 
-            function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog, $mdToast) {
+            function contentCtrl(lessonService, $mdBottomSheet, $mdSidenav, $scope, $mdDialog, $mdToast, $http, $mdPanel) {
 
                 var self = this;
 
@@ -25,6 +25,61 @@
                 self.makeContact = makeContact;
                 self.incrementVotes = incrementVotes;
                 self.showToast = showToast;
+                self.showMenu = showMenu;
+                
+                // GET THE DATA FROM PRODUCTHUNT API 
+                $http.get('../producthunt.json')
+                    .then(function(response) {
+                        self.day = null;
+                        self.products = response.data;
+                        console.log(response.data);
+                        angular.forEach(self.products, function(day) {
+                            self.day = day[0].day;
+                            console.log(self.day);
+                        })
+                    })
+                    .catch(function(error) {
+                        console.error("Error with GET request", e);
+                    });
+                
+                // SHOW DATA IN MENU
+                function showMenu(ev) {
+                    var position = $mdPanel.newPanelPosition()
+                        .relativeTo('.ph-fab')
+                        .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
+                    var config = {
+                        attachTo: angular.element(document.body),
+                        controller: contentCtrl,
+                        controllerAs: 'vm',
+                        template: '<div class="demo-menu-example" ' +
+                            '     aria-label="Select your favorite dessert." ' +
+                            '     role="listbox">' +
+                            '     <h4>Producthunt\'s\ most voted</h4> ' +
+                            '    <h5>{{vm.day | date:\'fullDate\'}}</h5>' +
+                            '  <div class="demo-menu-item" ' +
+                            '       ng-class="" ' +
+                            '       aria-selected="" ' +
+                            '       tabindex="-1" ' +
+                            '       role="option" ' +
+                            '       ng-click=""' +
+                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 200"' +
+                            '       ng-keydown="">' +
+                            '     ' +
+                            '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}} has {{p.votes_count}} votes</a>  ' +
+                            '  </div>' +
+                            '</div>',
+                        position: position,
+                        openFrom: ev,
+                        clickOutsideToClose: true,
+                        escapeToClose: true,
+                        focusOnOpen: false,
+                        zIndex: 2
+                    };
+
+                    $mdPanel.open(config);
+                    
+
+                }
 
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
@@ -32,6 +87,8 @@
                 $scope.$on('commentSent', function(event, message) {
                     showToast(message);
                 });
+
+
 
                 function incrementVotes(selected, vote) {
                     var votedValue = null;

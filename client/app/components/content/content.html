@@ -1,6 +1,6 @@
 
-  <img ng-src="{{selected.avatar}}" class="avatar">
-<a ng-href="{{selected.websiteUrl}}" target="_blank" title="go to {{selected.websiteUrl}}"><h2>{{selected.name}}</h2></a>
+  <a ng-href="{{selected.websiteUrl}}" target="_blank" title="go to {{selected.websiteUrl}}"><img ng-src="{{selected.avatar}}" class="avatar">
+<h2>{{selected.name}}</h2></a>
 <p>
     {{selected.content}}
 </p>
@@ -20,6 +20,11 @@
 </div>
 <div>
     <a twitter data-text="{{tweet}}" data-url="https://my-lessons.herokuapp.com/" class="tweet"></a>
+    
+        <md-button class="ph-fab" aria-label="Comment" ng-click="vm.showMenu($event)">
+       
+        </md-button>
+
 
     <comment></comment>
     

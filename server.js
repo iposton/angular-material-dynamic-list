@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
+var productHuntAPI = require('producthunt');
 var app = express();
 
 // set the port of our application
@@ -13,11 +14,28 @@ app.use(express.static(__dirname + '/client/app'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var ph;
+var productHunt = new productHuntAPI({
+  client_id: process.env.PH_KEY,
+  client_secret: process.env.PH_SECRET,
+  grant_type: 'client_credentials'
+});
+
+// List all live events and filter by category
+productHunt.posts.index({search: {category: 'tech'}}, function (err, res) {
+  ph = JSON.parse(res.body);
+});
+
 // set the home page route
 app.get('/', function(req, res) {
 
     // make sure index is in the right directory. In this case /app/index.html
     res.render('index');
+});
+
+// send producthunt data to client
+app.get('/producthunt.json', function(req, res) {
+    res.send(ph);
 });
 
 // for heroku config vars

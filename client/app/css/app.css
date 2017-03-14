@@ -323,4 +323,104 @@ button {
   overflow: auto;
 }
 
+/* Product Hunt */
 
+.ph-image {
+    position: relative;
+    width: 10%;
+    /*border: 1px solid #ddd;*/
+    /*border-radius: 50%;*/
+    display: inline-block!important;
+    overflow: hidden;
+    margin: 0;
+    vertical-align: middle;
+    zoom: 0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+
+
+.ph-fab {
+    /*background: #d45843;*/
+    background-image:url(../assets/img/ProductHunt-Logo.png);
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 20;
+    line-height: 56px;
+    min-width: 0;
+    width: 56px;
+    height: 56px;
+    vertical-align: middle;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 50%;
+    background-clip: padding-box;
+    overflow: hidden;
+   /* -webkit-transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    -webkit-transition-property: background-color, box-shadow, -webkit-transform;
+    transition-property: background-color, box-shadow, -webkit-transform;
+    transition-property: background-color, box-shadow, transform;
+    transition-property: background-color, box-shadow, transform, -webkit-transform;*/
+    /*position: absolute; 
+    bottom: 200px; 
+    right: 10px;*/
+    
+}
+
+/*.ph-size {
+    width: 100%;
+    height: 56px;
+    margin: 0 auto; 
+}*/
+
+.ph-fab:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/ProductHunt-Logo.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/ProductHunt-Logo.png);
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+  opacity: 0;
+  /*float: right;*/
+}
+
+.ph-fab:not([disabled]):hover:after {    
+    opacity: 1;
+}
+
+.demo-menu-example {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+      0 13px 19px 2px rgba(0, 0, 0, 0.14),
+      0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  width: 356px;
+  padding-top: 10px;
+}
+
+.demo-menu-example h4, 
+.demo-menu-example h5 {
+  text-align: center;
+}
+
+.demo-menu-item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 48px;
+  padding: 0 16px;
+  position: relative;
+  transition: background 0.15s linear;
+  width: auto;
+}
+
+.demo-menu-item a {
+    text-decoration: none;
+}
