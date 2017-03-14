@@ -52,9 +52,9 @@
                             '       tabindex="-1" ' +
                             '       role="option" ' +
                             '       ng-click=""' +
-                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 50"' +
+                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 150"' +
                             '       ng-keydown="" ng-if="vm.products.posts">' +
-                            '     <span ng-if="p.votes_count < 50">No products to show.</span>' +
+                            '     <span ng-if="p.votes_count < 150">No products to show.</span>' +
                             '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}} has {{p.votes_count}} votes</a>  ' +
                             '  </div>' +
                             '</div>',
@@ -75,8 +75,8 @@
 
                     var self = this;
                     
-                      // GET THE DATA FROM PRODUCTHUNT API 
-                $http.get('../producthunt.json')
+                // GET THE DATA FROM PRODUCTHUNT API 
+                $http.get('/producthunt')
                     .then(function(response) {
                         
                         self.day = null;

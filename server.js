@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 });
 
 // send producthunt data to client
-app.get('/producthunt.json', function(req, res) {
+app.get('/producthunt', function(req, res) {
     res.send(ph);
 });
 
