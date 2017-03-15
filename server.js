@@ -21,10 +21,6 @@ var productHunt = new productHuntAPI({
   grant_type: 'client_credentials'
 });
 
-// List all live events and filter by category
-// productHunt.posts.index({search: {category: 'tech'}}, function (err, res) {
-//   ph = JSON.parse(res.body);
-// });
 
 // set the home page route
 app.get('/', function(req, res) {
@@ -35,9 +31,10 @@ app.get('/', function(req, res) {
 
 // send producthunt data to client
 app.get('/producthunt', function(req, res) {
+    // List all posts and filter by category
     productHunt.posts.index({search: {category: 'tech'}}, function (err, res) {
-  ph = JSON.parse(res.body);
-});
+      ph = JSON.parse(res.body);
+    });
     res.send(ph);
 });
 

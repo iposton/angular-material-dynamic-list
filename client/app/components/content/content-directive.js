@@ -41,19 +41,19 @@
                             '<div class="demo-menu-example" ' +
                             '     aria-label="Select your favorite dessert." ' +
                             '     role="listbox">' +
-                            '<div layout="row" layout-sm="column" layout-align="space-around" ng-if="!vm.products.posts">' +
+                            '<div layout="row" layout-sm="column" layout-align="space-around" ng-if="!vm.products">' +
                             ' <md-progress-linear class="md-warn" md-mode="intermediate"></md-progress-linear>' +
                             '</div>' +
-                            '     <h4 ng-if="vm.products.posts">Producthunt\'s\ most voted</h4> ' +
-                            '    <h5 ng-if="vm.products.posts">{{vm.day | date:\'fullDate\'}}</h5>' +
+                            '     <h4 ng-if="vm.products">Producthunt\'s\ most voted</h4> ' +
+                            '    <h5 ng-if="vm.products">{{vm.day | date:\'fullDate\'}}</h5>' +
                             '  <div class="demo-menu-item" ' +
                             '       ng-class="" ' +
                             '       aria-selected="" ' +
                             '       tabindex="-1" ' +
                             '       role="option" ' +
                             '       ng-click=""' +
-                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 150"' +
-                            '       ng-keydown="" ng-if="vm.products.posts">' +
+                            '       ng-repeat="p in vm.products | orderBy:\'-votes_count\'" ng-if="p.votes_count > 150"' +
+                            '       ng-keydown="" ng-if="vm.products">' +
                             '     <span ng-if="p.votes_count < 150">No products to show.</span>' +
                             '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}}</a> <span class="vote-btn">{{p.votes_count}}</span>  ' +
                             '  </div>' +
@@ -71,7 +71,7 @@
 
                 }
 
-                function ProductHuntCtrl(mdPanelRef, $http) {
+            function ProductHuntCtrl(mdPanelRef, $http) {
 
                     var self = this;
                     
@@ -88,8 +88,7 @@
                         })
                     })
                     .catch(function(error) {
-                        console.error("Error with GET request", error);
-                        
+                        console.error("Error with GET request", error);  
                     });
                 }
 
