@@ -55,7 +55,7 @@
                             '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 150"' +
                             '       ng-keydown="" ng-if="vm.products.posts">' +
                             '     <span ng-if="p.votes_count < 150">No products to show.</span>' +
-                            '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}} has {{p.votes_count}} votes</a>  ' +
+                            '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}}</a> <span class="vote-btn">{{p.votes_count}}</span>  ' +
                             '  </div>' +
                             '</div>',
                         position: position,

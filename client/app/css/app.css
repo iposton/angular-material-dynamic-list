@@ -415,6 +415,14 @@ button {
 
 .demo-menu-item a {
     text-decoration: none;
+    color: #111;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.demo-menu-item a:hover {
+    text-decoration: none;
+    color: #444;
 }
 
 #innerContent {
@@ -424,4 +432,30 @@ button {
     border-top: 5px solid #ccc;
     width: 70%;
     height: auto;
+}
+
+.vote-btn {
+    background: #da552f;
+    border-color: #da552f;
+    color: #fff;
+    fill: #fff;
+    height: 20px;
+    border-radius: 3px;
+    padding: 0 8px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    outline: 0;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none!important;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .6px;
+    line-height: 16px;
+    text-transform: uppercase;
 }
