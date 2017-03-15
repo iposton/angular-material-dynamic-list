@@ -27,6 +27,22 @@
                 self.showToast = showToast;
                 self.showMenu = showMenu;
 
+                // GET THE DATA FROM PRODUCTHUNT API 
+                $http.get('/producthunt')
+                    .then(function(response) {
+                        
+                        self.day = null;
+                        self.products = response.data;
+                        
+                        angular.forEach(self.products, function(day) {
+                            self.day = day[0].day;
+                            
+                        })
+                    })
+                    .catch(function(error) {
+                        console.error("Error with GET request", error);  
+                    });
+
                 
                 // SHOW DATA IN MENU
                 function showMenu(ev) {
@@ -35,7 +51,7 @@
                         .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
                     var config = {
                         attachTo: angular.element(document.body),
-                        controller: ProductHuntCtrl,
+                        controller: contentCtrl,
                         controllerAs: 'vm',
                         template:
                             '<div class="demo-menu-example" ' +
@@ -52,7 +68,7 @@
                             '       tabindex="-1" ' +
                             '       role="option" ' +
                             '       ng-click=""' +
-                            '       ng-repeat="p in vm.products | orderBy:\'-votes_count\'" ng-if="p.votes_count > 150"' +
+                            '       ng-repeat="p in vm.products.posts | orderBy:\'-votes_count\'" ng-if="p.votes_count > 150"' +
                             '       ng-keydown="" ng-if="vm.products">' +
                             '     <span ng-if="p.votes_count < 150">No products to show.</span>' +
                             '    <a ng-href="{{p.discussion_url}}"><img ng-src="{{p.thumbnail.image_url}}" alt="" class="ph-image"> {{p.name}}</a> <span class="vote-btn">{{p.votes_count}}</span>  ' +
@@ -71,26 +87,26 @@
 
                 }
 
-            function ProductHuntCtrl(mdPanelRef, $http) {
+            // function ProductHuntCtrl(mdPanelRef, $http) {
 
-                    var self = this;
+            //         var self = this;
                     
-                // GET THE DATA FROM PRODUCTHUNT API 
-                $http.get('/producthunt')
-                    .then(function(response) {
+            //     // GET THE DATA FROM PRODUCTHUNT API 
+            //     $http.get('/producthunt')
+            //         .then(function(response) {
                         
-                        self.day = null;
-                        self.products = response.data;
+            //             self.day = null;
+            //             self.products = response.data;
                         
-                        angular.forEach(self.products, function(day) {
-                            self.day = day[0].day;
+            //             angular.forEach(self.products, function(day) {
+            //                 self.day = day[0].day;
                             
-                        })
-                    })
-                    .catch(function(error) {
-                        console.error("Error with GET request", error);  
-                    });
-                }
+            //             })
+            //         })
+            //         .catch(function(error) {
+            //             console.error("Error with GET request", error);  
+            //         });
+            //     }
 
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
