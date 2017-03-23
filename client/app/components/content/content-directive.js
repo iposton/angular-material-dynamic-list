@@ -20,7 +20,6 @@
                 var self = this;
 
                 self.message = null;
-                self.isLoading = true;
 
                 // DEFINE FUNCTIONS
                 self.makeContact = makeContact;
@@ -46,39 +45,22 @@
                         console.error("Error with GET request", error);  
                     });
 
-                    // $http.get('https://itunes.apple.com/us/rss/toppodcasts/limit=10/genre=1318/explicit=true/xml')
-                    // .then(function(response) {
-                        
-                    //     console.log(JSON(response.data));
-                    //     //self.podcastsData = response.data;
+                // code for angular-feeds module feed reader for itunes top 8 podcasts in tech
+                // define scope for returned feed data
+                $scope.url = 'https://itunes.apple.com/us/rss/toppodcasts/limit=8/genre=1318/explicit=true/xml';
+                $scope.count = 8;
+                $scope.summary = false;
 
-                    // })
-                    // .catch(function(error) {
-                    //     console.error("Error with GET request", error);  
-                    // });
-$scope.url = 'https://itunes.apple.com/us/rss/toppodcasts/limit=8/genre=1318/explicit=true/xml';
-    $scope.count = 8;
-    $scope.summary = false;
-    function showFeed (ev) {
-      self.isLoading = false;
-      var $panelBody = $('.panel-body');
-      $panelBody.html('');
-      var feedHTML = "<feed url='" + $scope.url + "' count='" + $scope.count + "' summary='" + $scope.summary + "'/>";
-      $panelBody.append($compile(feedHTML)($scope));
-    };
+                
+                // send url to feed directive append the data to menu in view
+                function showFeed (ev) {
+                  var $panelBody = $('.panel-body');
+                  $panelBody.html('');
+                  var feedHTML = "<feed url='" + $scope.url + "' count='" + $scope.count + "' summary='" + $scope.summary + "'/>";
+                  $panelBody.append($compile(feedHTML)($scope));
+                };
 
-    // var url = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-    // $scope.isOrigin = function (){
-    //   return window.parent.location.href.indexOf(url) === -1;
-    // };
-
-    
-
-//     $timeout(function(){
-//   console.log("show after directive partial loaded")
-//   $scope.showFeed();
-// }, 3000);
-
+                 // code for itunes api for podcasts tech category
                 // $http.jsonp('https://itunes.apple.com/search', { params: { term: 'Technology', entity: 'podcast', callback: 'JSON_CALLBACK' } }).success(function (response) { //console.log(response) 
                 // });
 
@@ -130,7 +112,7 @@ $scope.url = 'https://itunes.apple.com/us/rss/toppodcasts/limit=8/genre=1318/exp
                 function showMenuPc(ev) {
                     self.isLoading = false;
                     var position = $mdPanel.newPanelPosition()
-                        .relativeTo('.ph-fab')
+                        .relativeTo('.pc-fab')
                         .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
                     var config = {
                         attachTo: angular.element(document.body),
@@ -153,8 +135,6 @@ $scope.url = 'https://itunes.apple.com/us/rss/toppodcasts/limit=8/genre=1318/exp
 
                 }
 
-
-  
 
                 // GET FIREBASE DATA
                 self.lessons = lessonService.ref;
