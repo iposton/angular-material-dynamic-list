@@ -14,6 +14,8 @@ function LessonService($q, $http, $firebaseArray) {
             messagingSenderId: MSG_SND_ID
             };
            firebase.initializeApp(config);
+
+
  
   var ref = new Firebase(FIREBASE_URL);
  

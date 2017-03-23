@@ -340,6 +340,12 @@ button {
     -moz-transform: scale(0.70);
 }
 
+.podcast-img {
+    width: 25px;
+    height: 25px;
+    margin-right: 3px;
+}
+
 
 
 .ph-fab {
@@ -383,6 +389,8 @@ button {
     opacity: 1;
 }
 
+
+
 .demo-menu-example {
   background: white;
   border-radius: 4px;
@@ -411,6 +419,7 @@ button {
   position: relative;
   transition: background 0.15s linear;
   width: auto;
+  margin-bottom: 5px;
 }
 
 .demo-menu-item a {
@@ -458,4 +467,47 @@ button {
     letter-spacing: .6px;
     line-height: 16px;
     text-transform: uppercase;
+}
+
+/* Podcast feed */
+
+.pc-fab {
+    background-image:url(../assets/img/podcast.png);
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 20;
+    line-height: 56px;
+    min-width: 0;
+    width: 56px;
+    height: 56px;
+    vertical-align: middle;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 50%;
+    background-clip: padding-box;
+    /*overflow: hidden;*/
+    /*position: absolute;
+    top: 0;
+    right: 0;*/
+    
+}
+
+
+.pc-fab:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/podcast.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../assets/img/podcast.png);
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+  opacity: 0;
+  
+}
+
+.pc-fab:not([disabled]):hover:after {    
+    opacity: 0.2;
 }

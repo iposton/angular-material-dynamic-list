@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="css/app.css" />
+    
 </head>
 
 <body ng-app="MyApp" ng-cloak layout="column" ng-controller="LessonController as vm" ng-keydown="vm.showLogin($event)">
@@ -20,7 +21,8 @@
     <top-bar currentuser="vm.currentUser"></top-bar>
     
     <main-container currentuser="vm.currentUser"></main-container>
-
+    <!-- Jquery for rss feed reader -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -43,7 +45,12 @@
     <script src="components/edit-lesson/edit-lesson-directive.js"></script>
     <script src="components/comment/comment-directive.js"></script>
 
+                            
+   
     <script src="/firebaseurl.js"></script>
+
+    
+   
     <!-- <script src="/producthunt.json"></script> -->
     <script src="js/app.js"></script>
     <!-- Firebase -->
@@ -56,6 +63,12 @@
     <script src="config/firebase-config.js"></script>
     <!-- Twitter share button -->
     <script src="https://platform.twitter.com/widgets.js"></script>
+
+    <!-- rss feed reader module and dependencies -->
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/yui/build/yui/yui.js"></script>
+    <script src="angular-feeds/angular-feeds.js"></script>
+
 </body>
 
 </html>
