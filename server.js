@@ -46,6 +46,7 @@ app.get('/firebaseurl.js', function(req, res){
        res.write("var AUTH_DOM='"+process.env.AUTH_DOM+"'" + '\n');
        res.write("var STRG_BUCKET='"+process.env.STRG_BUCKET+"'" + '\n');
        res.write("var MSG_SND_ID='"+process.env.MSG_SND_ID+"'" + '\n');
+       res.write("var PP_API_KEY='"+process.env.PP_API_KEY+"'" + '\n');
        res.end();
 });
 

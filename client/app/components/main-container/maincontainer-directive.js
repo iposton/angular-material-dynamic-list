@@ -56,7 +56,7 @@
 
 
             }
-        }).directive('onLoadClicker', function($timeout) {
+        }).directive('onLoadClicker', function($timeout, $mdSidenav) {
             return {
                 restrict: 'A',
                 scope: {
