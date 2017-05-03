@@ -31,20 +31,20 @@
                 self.showFeed = showFeed;
 
                 // GET THE DATA FROM PRODUCTHUNT API 
-                // $http.get('/producthunt')
-                //     .then(function(response) {
+                $http.get('/producthunt')
+                    .then(function(response) {
                         
-                //         self.day = null;
-                //         self.products = response.data;
+                        self.day = null;
+                        self.products = response.data;
                         
-                //         angular.forEach(self.products, function(day) {
-                //             self.day = day[0].day;
+                        angular.forEach(self.products, function(day) {
+                            self.day = day[0].day;
                             
-                //         })
-                //     })
-                //     .catch(function(error) {
-                //         console.error("Error with GET request", error);  
-                //     });
+                        })
+                    })
+                    .catch(function(error) {
+                        console.error("Error with GET request", error);  
+                    });
 
                     $http({
                         method: 'get',
