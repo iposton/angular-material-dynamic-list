@@ -67,7 +67,7 @@
                         $timeout(function() {
 
                             iElm.triggerHandler('click');
-
+                            $mdSidenav('left').toggle();
                         }, 0);
                     }
                 }
