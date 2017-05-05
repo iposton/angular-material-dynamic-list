@@ -75,7 +75,7 @@
                   $panelBody.html('');
                   var feedHTML = "<feed url='" + $scope.url + "' count='" + $scope.count + "' summary='" + $scope.summary + "'/>";
                   $panelBody.append($compile(feedHTML)($scope));
-                };
+                }
 
                  // code for itunes api for podcasts tech category
                 // $http.jsonp('https://itunes.apple.com/search', { params: { term: 'Technology', entity: 'podcast', callback: 'JSON_CALLBACK' } }).success(function (response) { //console.log(response) 

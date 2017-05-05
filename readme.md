@@ -158,7 +158,7 @@ Move data to firebase...
 
 ***
 
-###Problems/Solutions
+### Problems/Solutions
 How to make the first item selected on load. The content is shown based on which item in the side-nav is selected. This is data-binding so that the data in one component can be shown in the other component. I was able to add the first item to selected to show when the page is loaded but it was static and when I add the like/dislike feature I needed a better way to select the first item in the side-nav. I needed to click the side-nav as the page loaded. This directive was very helpful. 
 
 ```js
@@ -224,12 +224,12 @@ I created a dummy link to firebaseurl.js in my index.html even though the file d
 
 ```
 
-###Features
-####Like/Dislike Feature
+### Features
+#### Like/Dislike Feature
 I added two features I am very proud of. I wanted to add a like/dislike feature so that people visiting this app can interact with the data. It's a simple incrementing function that adds one when the button is clicked then it's saved in the db. It's not perfect I would need to add authentication to limit each user to one click per item, but it is still is a fun feature. 
-####Popover Feature
+#### Popover Feature
 The other feature is a popover that displays a name and the link to this repo. I used a module called [drop-ng](https://github.com/stevenh77/drop-ng). This is a directive that uses the tether.js library and makes it compatible with angular. It was easy to set up and use in the app. 
-####Twitter Share Feature
+#### Twitter Share Feature
 Twitter share button. I used a plugin for this. I added the module script tag to index.html and used the directive in the content.html. An easy way to allow others to share your work on social media. 
 
 ```html
@@ -242,7 +242,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
  
 ``` 
 ### New Features February 2017
-####Create Firebase User for authentication 
+#### Create Firebase User for authentication 
 * Create a firebase user by going to your firebase console and in the sidenav under Develop click on the <code>Authentication</code> option. 
 * In Authentication go to the SIGN-IN METHOD tab and enable Email/Password. 
 * Then click on USERS tab and click ADD USER button. Enter an email and password.
@@ -314,7 +314,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 
 
-####Create, Update, and Delete data using angular-material $mdDialog.
+#### Create, Update, and Delete data using angular-material $mdDialog.
 * Create new data then save to your firebase db with this html and add new data function. 
 
 ```html
@@ -547,7 +547,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 * I am passing in the selected data again and then calling <code>$remove</code> from the firebase ref.
 
-####Prevent like dislike clicks per session
+#### Prevent like dislike clicks per session
 * This feature is to prevent a user from clicking multiple times per session. I created 2 attributes to be added to the data object that would then allow me to disable the buttons after one of the buttons had been selected and give a friendly message. It will disable the buttons until the page is refreshed. So It won't stop a user from voting again but it will require doing extra work to keep users from abusing the voting option. I can't block a user to one vote unless I have an auth token for that user and this app is not set up to auth users so this is a little trick I used to prevent too many clicks at once. It works well for this fun app. 
 
 ```html
@@ -592,7 +592,7 @@ Twitter share button. I used a plugin for this. I added the module script tag to
 
 * When I add <code>selected.voted = self.voted = true;</code> I can use the built in angular directive <code>ng-disabled</code> on the button to disable the button after the click. It will only disable the buttons of the selected object. I also add a nice message to the selected object to avoid the message showing on all the data generated from the ng-repeat of the firebase ref array.  
 
-####Customize the twitter button to pull in selected data.
+#### Customize the twitter button to pull in selected data.
 
 * I created a twitter directive that would use Angular's $watch expression to see if the share button text had changed depending on which item in my data is selected. If the tweet changes the directive has to remove the old share button and create a new one. 
 
@@ -851,11 +851,11 @@ function closeDialog() {
 
 Note: Keep checking back in as I will add some more features to this app.
 
-###References
+### References
 The angular-material course on egghead. [https://egghead.io/lessons/angularjs-angular-material-installing-with-npm](https://egghead.io/lessons/angularjs-angular-material-installing-with-npm)
 Ultimate AngularJS: Build a Real-World App from Scratch. [https://www.udemy.com/ultimate-angularjs-course/](https://www.udemy.com/ultimate-angularjs-course/)
 Authenticate with Firebase using Password-Based Accounts [https://firebase.google.com/docs/auth/web/password-auth](https://firebase.google.com/docs/auth/web/password-auth)
 
 
 
-####[My Lessons](https://my-lessons.herokuapp.com/)
+#### [My Lessons](https://my-lessons.herokuapp.com/)

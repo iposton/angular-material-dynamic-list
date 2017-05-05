@@ -70,8 +70,7 @@
                         controllerAs: 'vm',
                         parent: parentEl,
                         targetEvent: $event,
-                        templateUrl: 'components/edit-lesson/editLessonModal.html',
-
+                        templateUrl: 'components/edit-lesson/editLessonModal.html'
                     });
 
                 }
