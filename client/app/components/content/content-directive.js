@@ -126,72 +126,72 @@
 
 
                 // SHOW DATA IN MENU
-                function showMenuPc(ev) {
-                    self.isLoading = false;
-                    var position = $mdPanel.newPanelPosition()
-                        .relativeTo('.pc-fab')
-                        .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
-                    var config = {
-                        attachTo: angular.element(document.body),
-                        controller: contentCtrl,
-                        controllerAs: 'vm',
-                        template:
-                            '  <div class="panel-body">' +
-                            '  </div>',
-                        position: position,
-                        openFrom: ev,
-                        clickOutsideToClose: true,
-                        escapeToClose: true,
-                        focusOnOpen: false,
-                        zIndex: 2
-                    };
+                // function showMenuPc(ev) {
+                //     self.isLoading = false;
+                //     var position = $mdPanel.newPanelPosition()
+                //         .relativeTo('.pc-fab')
+                //         .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
+                //     var config = {
+                //         attachTo: angular.element(document.body),
+                //         controller: contentCtrl,
+                //         controllerAs: 'vm',
+                //         template:
+                //             '  <div class="panel-body">' +
+                //             '  </div>',
+                //         position: position,
+                //         openFrom: ev,
+                //         clickOutsideToClose: true,
+                //         escapeToClose: true,
+                //         focusOnOpen: false,
+                //         zIndex: 2
+                //     };
 
-                    $mdPanel.open(config);
-                    $timeout(function(){self.showFeed();}, 50);
+                //     $mdPanel.open(config);
+                //     $timeout(function(){self.showFeed();}, 50);
                     
 
-                }
+                // }
 
-                  function showMenuPropub(ev) {
-                    var position = $mdPanel.newPanelPosition()
-                        .relativeTo('.pro-fab')
-                        .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
-                    var config = {
-                        attachTo: angular.element(document.body),
-                        controller: contentCtrl,
-                        controllerAs: 'vm',
-                        template:
-                            '<div class="demo-menu-example" ' +
-                            '     aria-label="senators" ' +
-                            '     role="listbox">' +
-                            '<div layout="row" layout-sm="column" layout-align="space-around" ng-if="!vm.senators">' +
-                            ' <md-progress-linear class="md-warn" md-mode="intermediate"></md-progress-linear>' +
-                            '</div>' +
-                            '     <h4 ng-if="vm.senators">Tweet your state senator</h4> ' +
-                            '    <h5 ng-if="vm.senators">{{vm.day | date:\'fullDate\'}}</h5>' +
-                            '  <div class="demo-menu-item" ' +
-                            '       ng-class="" ' +
-                            '       aria-selected="" ' +
-                            '       tabindex="-1" ' +
-                            '       role="option" ' +
-                            '       ng-click=""' +
-                            '       ng-repeat="s in vm.senators"' +
-                            '       ng-keydown="">' +
-                            '    <a ng-href="https://twitter.com/{{s.twitter_account}}"><img ng-src="https://know-my-senators.herokuapp.com/public/img/senators/{{s.id}}.jpg" alt="" class="ph-image"> {{s.first_name}} {{s.last_name}} {{s.state}}</a>  ' +
-                            '  </div>' +
-                            '</div>',
-                        position: position,
-                        openFrom: ev,
-                        clickOutsideToClose: true,
-                        escapeToClose: true,
-                        focusOnOpen: false,
-                        zIndex: 2
-                    };
+                //   function showMenuPropub(ev) {
+                //     var position = $mdPanel.newPanelPosition()
+                //         .relativeTo('.pro-fab')
+                //         .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.BELOW);
+                //     var config = {
+                //         attachTo: angular.element(document.body),
+                //         controller: contentCtrl,
+                //         controllerAs: 'vm',
+                //         template:
+                //             '<div class="demo-menu-example" ' +
+                //             '     aria-label="senators" ' +
+                //             '     role="listbox">' +
+                //             '<div layout="row" layout-sm="column" layout-align="space-around" ng-if="!vm.senators">' +
+                //             ' <md-progress-linear class="md-warn" md-mode="intermediate"></md-progress-linear>' +
+                //             '</div>' +
+                //             '     <h4 ng-if="vm.senators">Tweet your state senator</h4> ' +
+                //             '    <h5 ng-if="vm.senators">{{vm.day | date:\'fullDate\'}}</h5>' +
+                //             '  <div class="demo-menu-item" ' +
+                //             '       ng-class="" ' +
+                //             '       aria-selected="" ' +
+                //             '       tabindex="-1" ' +
+                //             '       role="option" ' +
+                //             '       ng-click=""' +
+                //             '       ng-repeat="s in vm.senators"' +
+                //             '       ng-keydown="">' +
+                //             '    <a ng-href="https://twitter.com/{{s.twitter_account}}"><img ng-src="https://know-my-senators.herokuapp.com/public/img/senators/{{s.id}}.jpg" alt="" class="ph-image"> {{s.first_name}} {{s.last_name}} {{s.state}}</a>  ' +
+                //             '  </div>' +
+                //             '</div>',
+                //         position: position,
+                //         openFrom: ev,
+                //         clickOutsideToClose: true,
+                //         escapeToClose: true,
+                //         focusOnOpen: false,
+                //         zIndex: 2
+                //     };
 
-                    $mdPanel.open(config);
+                //     $mdPanel.open(config);
                     
 
-                }
+                // }
 
 
                 // GET FIREBASE DATA
