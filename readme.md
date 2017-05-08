@@ -20,7 +20,7 @@ This app is for beginners to make an app and host it for free so that the app is
 * Angular.js (version 1.5.8) 
 * Node.js (version 6.0.0)     
 * Firebase [Set up a free account ](https://firebase.google.com/) 
-* [angular-material](version master)
+* [angular-material](https://github.com/angular/material/tree/v1.1.4) (version master)
 * [drop-ng](https://github.com/stevenh77/drop-ng)
 * Heroku [Set up a free account ](https://www.heroku.com/)
 * Nodemailer (version 3.1.3)
