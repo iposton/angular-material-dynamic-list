@@ -25,10 +25,17 @@
                 // Define functions
                 self.getTweet = getTweet;
                 self.selectLesson = selectLesson;
-                self.setActive = setActive;
+                self.setActive = setActive; 
                 
-                // PULL IN DATA FROM FIREBASE
-                self.lessons = lessonService.ref;
+                // PULL IN DATA FROM FIREBASE AND SHUFFLE THE ORDER OF DATA
+                lessonService.ref.$loaded().then(function(data) {
+                    angular.forEach(data, function(value, key) {
+                    self.lessons = data.sort(function() {
+                      return .5 - Math.random();
+                    });
+                  });
+                });
+                
 
                 function selectLesson(lesson) {
                     self.selected = lesson;
@@ -53,9 +60,8 @@
                 function getTweet() {
                     self.tweet = "Check out " + self.selected.name + " at " + self.selected.websiteUrl + ". More info about where to find coding lessons.";
                 }
-
-
             }
+
         }).directive('onLoadClicker', function($timeout, $mdSidenav) {
             return {
                 restrict: 'A',

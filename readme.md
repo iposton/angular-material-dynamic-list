@@ -194,7 +194,7 @@ I am passing in the index so that I can specify in the directive to only click t
 
 In this app I had to allow for read and write access to my db to allow for like/dislike increments. Firebase security defaults this to read and write authentication required. This app does not authenticate users so I had to bypass this security check. If you do it will allow for anyone to write to your data using the firebase ref. So beware if you follow this same route I took. In my case this is just a fun app that doesn't have anything sensitive in it so I'm not worried about security. Besides if somebody wrote data to it I would just cancel it and make a new ref. 
 
-Adding the environment variable for firebase ref. I didn't want to share my firebase ref in my repo so I added env_var for heroku to use. I stored the ref in my heroku app by going to the app settings in my heroku dashboard. Click on Config Variables and add the key value there. It will be secured safely away from human view. You can call it to the client side by adding this code to the server.js file. I called my env_var for firebase FIREBASE_URL and made the value the firebase ref url form my db. 
+Adding the environment variable for firebase ref. I didn't want to share my firebase ref in my repo so I added env_var for heroku to use. I stored the ref in my heroku app by going to the app settings in my heroku dashboard. Click on Config Variables and add the key value there. It will be secured safely away from human view. You can call it to the client side by adding this code to the server.js file. I called my env_var for firebase FIREBASE_URL and made the value the firebase ref url from my db. 
 
 
 ```js
